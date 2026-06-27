@@ -33,7 +33,7 @@ function Dominios() {
       setInput(dominioInicial);
       manejarBusqueda(dominioInicial, tipoInicial);
     }
-  }, []);
+  }, [dominioInicial, tipoInicial]);
 
   const obtenerDominiosEnCarrito = async () => {
     if (!usuario || !usuario.idcuenta) return new Set();
