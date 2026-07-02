@@ -264,3 +264,56 @@ body.dark-mode .modo-ia .buscador button {
   border: 1px solid #FFA94D;
   box-shadow: 0 0 10px 3px rgba(255, 132, 0, 0.654);
 }
+
+/* ==== Estilos para Botón Metáfora del Buscador (Alto Contraste) ==== */
+.buscador {
+  align-items: center; /* Alinear verticalmente input y botón */
+}
+
+.buscador input {
+  padding: 12px 18px;
+  border-radius: 25px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.boton-buscador-metaphora {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 52px !important;
+  height: 52px !important;
+  padding: 0 !important;
+  border-radius: 50% !important;
+  background: linear-gradient(135deg, var(--cafe), #b25800) !important;
+  border: 2px solid #FFFFFF !important; /* Borde blanco de alto contraste */
+  box-shadow: 0 4px 12px rgba(146, 70, 0, 0.4) !important;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+}
+
+.boton-buscador-metaphora:hover {
+  transform: scale(1.15) !important;
+  box-shadow: 0 6px 18px rgba(255, 132, 0, 0.6) !important;
+  background: linear-gradient(135deg, #a64f00, #d96c00) !important;
+}
+
+body.dark-mode .boton-buscador-metaphora {
+  background: linear-gradient(135deg, #FFA94D, #ffc280) !important;
+  border: 2px solid #FFFFFF !important;
+  box-shadow: 0 4px 12px rgba(255, 169, 77, 0.4) !important;
+}
+
+body.dark-mode .boton-buscador-metaphora:hover {
+  background: linear-gradient(135deg, #e38b31, #FFA94D) !important;
+  box-shadow: 0 6px 18px rgba(255, 169, 77, 0.7) !important;
+}
+
+.boton-buscador-metaphora svg {
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.boton-buscador-metaphora:hover svg {
+  transform: rotate(10deg) scale(1.05);
+}
+
