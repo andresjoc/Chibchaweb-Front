@@ -264,3 +264,16 @@ body.dark-mode .modo-ia .buscador button {
   border: 1px solid #FFA94D;
   box-shadow: 0 0 10px 3px rgba(255, 132, 0, 0.654);
 }
+
+/* ==== Estilos para Botón Selector IA Metáfora ==== */
+.boton-selector-ia-metaphora {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 8px 12px !important;
+}
+
+.boton-selector-ia-metaphora svg {
+  display: block;
+}
+
