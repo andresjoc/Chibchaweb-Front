@@ -18,7 +18,7 @@ export default function ConfirmarCuenta() {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
   const yaConfirmado = useRef(false); // 🛑 para evitar verificación múltiple
-
+  const { setUsuario } = useUser(); // ✅ Obtener setUsuario para inicio de sesión automático
 
   useEffect(() => {
     const tokenURL = searchParams.get("token");
@@ -44,13 +44,17 @@ const confirmarCuenta = async (token, idcuenta) => {
       },
     });
 
-    const data = await res.text();
-
     if (res.ok) {
-      setMensaje("✅ Cuenta confirmada exitosamente. Serás redirigido al inicio de sesión...");
+      const data = await res.json();
+      // Guardar el usuario en el contexto y localStorage con verificado = true
+      const usuarioFinal = { ...data, verificado: true };
+      setUsuario(usuarioFinal);
+      
+      setMensaje("✅ Cuenta confirmada exitosamente. Iniciando sesión...");
       setEstado("success");
-      setTimeout(() => navigate("/Home"), 2500);
+      setTimeout(() => navigate("/perfil"), 2000);
     } else {
+      const data = await res.text();
       setMensaje(`❌ Error: ${data}`);
       setEstado("error");
     }

@@ -200,8 +200,8 @@ export default function Login() {
       </div>
 
       {mostrarModalCorreo && (
-        <div className="modal-overlay">
-          <div className="modal">
+        <div className="chibcha-modal-overlay">
+          <div className="chibcha-modal">
             <h2>Recuperar contraseña</h2>
             <input
               type="email"
@@ -218,8 +218,8 @@ export default function Login() {
       )}
 
       {mostrarModalToken && (
-        <div className="modal-overlay">
-          <div className="modal">
+        <div className="chibcha-modal-overlay">
+          <div className="chibcha-modal">
             <h2>Restablecer contraseña</h2>
             <input
               type="text"

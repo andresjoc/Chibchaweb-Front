@@ -178,6 +178,12 @@ const manejarPago = async () => {
   const eliminarDominio = async (iddominio) => {
     if (!usuario || !usuario.idcuenta) return;
 
+    // Guardar copia del estado anterior para poder revertir si es necesario
+    const itemsAnteriores = [...items];
+
+    // Actualización optimista: removemos el item de la lista inmediatamente
+    setItems(prev => prev.filter(item => item.nombre !== iddominio));
+
     try {
       const respuesta = await fetch(
         `${import.meta.env.VITE_API_URL}/EliminarDominioCarrito?idcuenta=${usuario.idcuenta}&iddominio=${iddominio}`,
@@ -190,12 +196,11 @@ const manejarPago = async () => {
       );
 
       if (!respuesta.ok) throw new Error("Error al eliminar dominio del carrito");
-
-      setItems(prev => prev.filter(item => item.nombre !== iddominio));
-      alert(`Se ha eliminado "${iddominio}" del carrito.`);
     } catch (err) {
       console.error("❌ Error eliminando dominio:", err);
-      alert("No se pudo eliminar el dominio del carrito.");
+      // Revertimos la eliminación
+      setItems(itemsAnteriores);
+      alert("❌ No se pudo eliminar el dominio del carrito.");
     }
   };
 

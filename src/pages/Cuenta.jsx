@@ -307,8 +307,8 @@ const guardarCambios = async () => {
       </div>
 
       {mostrarDialogo && (
-        <div className="modal-overlay">
-          <div className="modal">
+        <div className="chibcha-modal-overlay">
+          <div className="chibcha-modal">
             <h3>Actualizar contraseña</h3>
             <input type="password" placeholder="Contraseña actual" value={contrasenaActual} onChange={(e) => setContrasenaActual(e.target.value)} />
             <input type="password" placeholder="Nueva contraseña" value={contrasenaNueva} onChange={(e) => setContrasenaNueva(e.target.value)} />

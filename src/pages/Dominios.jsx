@@ -179,6 +179,13 @@ function Dominios() {
       return;
     }
 
+    // Actualización optimista: agregamos al Set inmediatamente
+    setDominiosAgregados(prev => {
+      const next = new Set(prev);
+      next.add(dom.id);
+      return next;
+    });
+
     try {
       const response = await fetch(`${import.meta.env.VITE_API_URL}/agregarDominio`, {
         method: 'POST',
@@ -197,7 +204,7 @@ function Dominios() {
 
       if (!response.ok) throw new Error("Error al agregar dominio");
 
-      await fetch(`${import.meta.env.VITE_API_URL}/dominios/agregar-a-carrito-existente`, {
+      const response2 = await fetch(`${import.meta.env.VITE_API_URL}/dominios/agregar-a-carrito-existente`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -209,10 +216,16 @@ function Dominios() {
         })
       });
 
-      setDominiosAgregados(prev => new Set(prev).add(dom.id));
-      alert(`✅ Dominio ${dom.nombre} agregado al carrito.`);
+      if (!response2.ok) throw new Error("Error al asociar dominio al carrito");
     } catch (err) {
-      alert("No se pudo agregar el dominio.");
+      console.error(err);
+      // Revertimos la actualización optimista si falla
+      setDominiosAgregados(prev => {
+        const next = new Set(prev);
+        next.delete(dom.id);
+        return next;
+      });
+      alert("❌ No se pudo agregar el dominio al carrito.");
     }
   };
 
