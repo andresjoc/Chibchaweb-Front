@@ -256,8 +256,14 @@ function Dominios() {
           value={input}
           onChange={e => setInput(e.target.value)}
         />
-        <button className="boton-adquirir" onClick={() => manejarBusqueda(null, tipoBusqueda)}>
-          Buscar Dominio
+        <button className="boton-buscador-metaphora" onClick={() => manejarBusqueda(null, tipoBusqueda)} title="Buscar Dominio" aria-label="Buscar Dominio">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="30" height="30">
+            <rect x="28" y="28" width="7" height="17" rx="3.5" transform="rotate(-45 32 37)" fill="#FFFFFF" />
+            <path d="M 23 23 L 26 26" stroke="#FFFFFF" strokeWidth="3.5" strokeLinecap="round"/>
+            <circle cx="18" cy="18" r="12" fill="none" stroke="#FFFFFF" strokeWidth="3.5" />
+            <circle cx="18" cy="18" r="9" fill="#FFFFFF" fillOpacity="0.3" />
+            <path d="M 12 14 A 7 7 0 0 1 20 10" fill="none" stroke="#FFFFFF" strokeWidth="2" strokeLinecap="round" opacity="0.9" />
+          </svg>
         </button>
       </div>
     </div>
