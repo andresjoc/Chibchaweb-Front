@@ -234,22 +234,28 @@ if (verificandoRedireccion) return null;
     <main className="planes-hosting">
       <h1>Planes de Hosting</h1>
 
-      <div className="planes-toggle">
+      <div className="planes-toggle" role="group" aria-label="Filtrar por periodo de facturación">
         <button
+          type="button"
           className={periodoSeleccionado === 30 ? 'activo' : ''}
           onClick={() => filtrarPlanes(todosLosPlanes, 30)}
+          aria-pressed={periodoSeleccionado === 30}
         >
           Mensual
         </button>
         <button
+          type="button"
           className={periodoSeleccionado === 180 ? 'activo' : ''}
           onClick={() => filtrarPlanes(todosLosPlanes, 180)}
+          aria-pressed={periodoSeleccionado === 180}
         >
           Semestral
         </button>
         <button
+          type="button"
           className={periodoSeleccionado === 365 ? 'activo' : ''}
           onClick={() => filtrarPlanes(todosLosPlanes, 365)}
+          aria-pressed={periodoSeleccionado === 365}
         >
           Anual
         </button>
@@ -292,25 +298,29 @@ if (verificandoRedireccion) return null;
 
                 <p className="precio">${plan.precio.toLocaleString()} USD</p>
                 <ul>
-                  <li><FontAwesomeIcon icon={faServer} /> Sitios: {plan.sitios}</li>
-                  <li><FontAwesomeIcon icon={faDatabase} /> Bases de datos: {plan.bases}</li>
-                  <li><FontAwesomeIcon icon={faHdd} /> SSD: {plan.ssd}</li>
-                  <li><FontAwesomeIcon icon={faEnvelope} /> Correos: {plan.correos}</li>
-                  <li><FontAwesomeIcon icon={faLock} /> Certificados SSL: {plan.ssl}</li>
+                  <li><FontAwesomeIcon icon={faServer} aria-hidden="true" /> Sitios: {plan.sitios}</li>
+                  <li><FontAwesomeIcon icon={faDatabase} aria-hidden="true" /> Bases de datos: {plan.bases}</li>
+                  <li><FontAwesomeIcon icon={faHdd} aria-hidden="true" /> SSD: {plan.ssd}</li>
+                  <li><FontAwesomeIcon icon={faEnvelope} aria-hidden="true" /> Correos: {plan.correos}</li>
+                  <li><FontAwesomeIcon icon={faLock} aria-hidden="true" /> Certificados SSL: {plan.ssl}</li>
                 </ul>
 
               {mismoPlan && tienePlanActivo ? (
                 <button
+                  type="button"
                   className="btn-adquirido"
                   onClick={() => navigate("/paquete-adquirido")}
+                  aria-label={`Ver tu paquete de hosting ${plan.nombre}`}
                 >
                   Ver paquete
                 </button>
               ) : (
                 <button
+                  type="button"
                   className="btn-adquirir"
                   disabled={desactivado || comprando === plan.id}
                   onClick={() => adquirirPaquete(plan.id)}
+                  aria-label={`Adquirir plan de hosting ${plan.nombre}`}
                 >
                   {comprando === plan.id ? "Procesando..." : "Adquirir"}
                 </button>

@@ -120,7 +120,7 @@ export default function PaqueteAdquirido() {
     return (
       <div className="paquete-wrapper">
         <div className="paquete-contenedor mensaje-sin-paquete">
-          <div className="icono-triste">📭</div>
+          <div className="icono-triste" aria-hidden="true">📭</div>
           <h2>No tienes un paquete activo</h2>
           <p>Adquiere uno para ver y administrar tus servicios.</p>
         </div>
@@ -173,7 +173,7 @@ const obtenerLimiteTamano = (tipo) => {
                         {item.TAMANO && item.TAMANO !== "NA" && (
                           <span className="item-tamano">{item.TAMANO}</span>
                         )}
-                        <button className="btn-editar" onClick={() => iniciarEdicion(item)}>
+                        <button className="btn-editar" onClick={() => iniciarEdicion(item)} type="button" aria-label={`Editar ${item.NOMBREITEM}`}>
                           Editar
                         </button>
                       </div>
@@ -187,13 +187,28 @@ const obtenerLimiteTamano = (tipo) => {
       </div>
 
       {editandoItem && (
-        <div className="modal-overlay">
-          <div className="modal-contenido">
-            <button className="cerrar-modal" onClick={() => setEditandoItem(null)}>✕</button>
-            <h2>Editar ítem</h2>
+        <div 
+          className="modal-overlay"
+          onClick={() => setEditandoItem(null)}
+        >
+          <div 
+            className="modal-contenido"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="modal-titulo"
+            onClick={(e) => e.stopPropagation()}
+            onKeyDown={(e) => {
+              if (e.key === 'Escape') {
+                setEditandoItem(null);
+              }
+            }}
+          >
+            <button className="cerrar-modal" onClick={() => setEditandoItem(null)} type="button" aria-label="Cerrar diálogo">✕</button>
+            <h2 id="modal-titulo">Editar ítem</h2>
 
-            <label>Nombre del ítem</label>
+            <label htmlFor="edit-item-name">Nombre del ítem</label>
             <input
+              id="edit-item-name"
               className="input-editar"
               type="text"
               value={form.nombreitem}
@@ -202,8 +217,9 @@ const obtenerLimiteTamano = (tipo) => {
 
             {editandoItem.TAMANO !== "NA" && (
               <>
-                <label>Tamaño</label>
+                <label htmlFor="edit-item-size">Tamaño</label>
                 <input
+                  id="edit-item-size"
                   className="input-editar"
                   type="number"
                   max={obtenerLimiteTamano(editandoItem.DESCRIPCION)}
@@ -228,14 +244,14 @@ const obtenerLimiteTamano = (tipo) => {
             )}
 
             <div className="acciones-edicion">
-              <button className="btn-guardar" onClick={guardarCambios}>Guardar</button>
-              <button className="btn-cancelar" onClick={() => setEditandoItem(null)}>Cancelar</button>
+              <button className="btn-guardar" onClick={guardarCambios} type="button">Guardar</button>
+              <button className="btn-cancelar" onClick={() => setEditandoItem(null)} type="button">Cancelar</button>
             </div>
           </div>
         </div>
       )}
 
-      {mensaje && <div className="mensaje-flotante">{mensaje}</div>}
+      {mensaje && <div className="mensaje-flotante" role="status" aria-live="polite">{mensaje}</div>}
     </div>
   );
 }
