@@ -12,6 +12,25 @@
   box-shadow: 0 4px 10px rgba(107, 59, 0, 0.05);
 }
 
+.plan-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.plan-fa-icon {
+  font-size: 56px;
+  color: #924600;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.plan-card:hover .plan-fa-icon {
+  transform: scale(1.15);
+  color: #b95c00;
+}
+
+
 .plan-card:hover {
   transform: translateY(-8px);
   box-shadow: 0 12px 25px rgba(107, 59, 0, 0.15);
