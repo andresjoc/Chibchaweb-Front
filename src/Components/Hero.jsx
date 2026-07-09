@@ -19,16 +19,20 @@ function Hero() {
       <p className="hero-subtitle">Encuentra el nombre perfecto para tu sitio web</p>
 
       {/* Selector de tipo de dominio */}
-      <div className="hero-toggle">
+      <div className="hero-toggle" role="group" aria-label="Seleccionar tipo de búsqueda de dominio">
         <button
+          type="button"
           className={tipoDominio === 'normal' ? 'activo' : ''}
           onClick={() => setTipoDominio('normal')}
+          aria-pressed={tipoDominio === 'normal'}
         >
           Dominio específico
         </button>
         <button
+          type="button"
           className={tipoDominio === 'ia' ? 'activo' : ''}
           onClick={() => setTipoDominio('ia')}
+          aria-pressed={tipoDominio === 'ia'}
         >
           Generar Dominio con IA
         </button>
@@ -47,7 +51,7 @@ function Hero() {
           onChange={(e) => setDominio(e.target.value)}
           className="hero-input"
         />
-        <button className="hero-button" onClick={handleBuscar}>
+        <button className="hero-button" onClick={handleBuscar} type="button">
           Buscar dominio
         </button>
       </div>
