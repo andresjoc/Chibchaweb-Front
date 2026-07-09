@@ -1,6 +1,6 @@
 import './Plans.css';
 import PlanCard from './PlanCard';
-import { faStore, faHeadset, faServer } from '@fortawesome/free-solid-svg-icons';
+import { faLayerGroup, faLifeRing, faInfinity } from '@fortawesome/free-solid-svg-icons';
 
 function Plans() {
   const plans = [
@@ -8,19 +8,19 @@ function Plans() {
       title: 'Todo lo que necesitas en un solo lugar',
       description:
         'Registra tu dominio y activa tu hosting sin complicaciones. No necesitas ir a ningún otro sitio web.',
-      faIcon: faStore,
+      faIcon: faLayerGroup,
     },
     {
       title: 'Te ayudamos cuando lo necesitas',
       description:
         '¿Tienes dudas? Estamos para ayudarte. Nuestro equipo de soporte está disponible para ti.',
-      faIcon: faHeadset,
+      faIcon: faLifeRing,
     },
     {
       title: 'Tu sitio siempre disponible',
       description:
         'Nos encargamos de que tu página funcione sin interrupciones y esté accesible las 24 horas del día, los 7 días de la semana.',
-      faIcon: faServer,
+      faIcon: faInfinity,
     },
   ];
 
