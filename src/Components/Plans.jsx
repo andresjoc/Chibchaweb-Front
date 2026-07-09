@@ -1,6 +1,6 @@
 import './Plans.css';
 import PlanCard from './PlanCard';
-import { faLayerGroup, faLifeRing, faInfinity } from '@fortawesome/free-solid-svg-icons';
+import { faLayerGroup, faHeadset, faInfinity } from '@fortawesome/free-solid-svg-icons';
 
 function Plans() {
   const plans = [
@@ -14,7 +14,7 @@ function Plans() {
       title: 'Te ayudamos cuando lo necesitas',
       description:
         '¿Tienes dudas? Estamos para ayudarte. Nuestro equipo de soporte está disponible para ti.',
-      faIcon: faLifeRing,
+      faIcon: faHeadset,
     },
     {
       title: 'Tu sitio siempre disponible',
