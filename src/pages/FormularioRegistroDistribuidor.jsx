@@ -136,7 +136,7 @@ export default function FormularioRegistroDistribuidor() {
           <form onSubmit={manejarSubmit} className="form-dos-columnas">
             {/* Columna izquierda */}
             <div className="columna-formulario">
-              <fieldset style={{ border: 'none', padding: 0, margin: '0 0 1.5rem 0' }}>
+              <fieldset className="fieldset-formulario">
                 <legend className="separador-formulario">Datos de la empresa</legend>
                 <label htmlFor="dist-razon-social" className="sr-only">Razón social</label>
                 <input
@@ -163,7 +163,7 @@ export default function FormularioRegistroDistribuidor() {
                 />
               </fieldset>
 
-              <fieldset style={{ border: 'none', padding: 0, margin: '0 0 1.5rem 0' }}>
+              <fieldset className="fieldset-formulario">
                 <legend className="separador-formulario">Datos de contacto</legend>
                 <label htmlFor="dist-correo" className="sr-only">Correo electrónico</label>
                 <input
@@ -201,7 +201,7 @@ export default function FormularioRegistroDistribuidor() {
 
             {/* Columna derecha */}
             <div className="columna-formulario">
-              <fieldset style={{ border: 'none', padding: 0, margin: '0 0 1.5rem 0' }}>
+              <fieldset className="fieldset-formulario">
                 <legend className="separador-formulario">Credenciales</legend>
                 <label htmlFor="dist-password" className="sr-only">Contraseña</label>
                 <input
@@ -227,7 +227,7 @@ export default function FormularioRegistroDistribuidor() {
                 />
               </fieldset>
 
-              <fieldset style={{ border: 'none', padding: 0, margin: '0 0 1.5rem 0' }}>
+              <fieldset className="fieldset-formulario">
                 <legend className="separador-formulario">País</legend>
                 <label htmlFor="dist-pais" className="sr-only">País</label>
                 <select id="dist-pais" name="idpais" value={form.idpais} onChange={manejarCambio} autoComplete="country">

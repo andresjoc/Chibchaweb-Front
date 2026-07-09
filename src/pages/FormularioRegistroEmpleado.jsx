@@ -123,7 +123,7 @@ export default function FormularioRegistroEmpleado() {
           <form onSubmit={manejarSubmit} className="form-dos-columnas">
             {/* Columna izquierda */}
             <div className="columna-formulario">
-              <fieldset style={{ border: 'none', padding: 0, margin: '0 0 1.5rem 0' }}>
+              <fieldset className="fieldset-formulario">
                 <legend className="separador-formulario">Datos personales</legend>
                 <label htmlFor="emp-nombre" className="sr-only">Nombre completo</label>
                 <input type="text" id="emp-nombre" placeholder="Nombre completo" name="nombreCuenta" required value={form.nombreCuenta} onChange={manejarCambio} autoComplete="name" />
@@ -135,7 +135,7 @@ export default function FormularioRegistroEmpleado() {
                 <input type="text" id="emp-direccion" placeholder="Dirección (opcional)" name="direccion" value={form.direccion} onChange={manejarCambio} autoComplete="street-address" />
               </fieldset>
 
-              <fieldset style={{ border: 'none', padding: 0, margin: '0 0 1.5rem 0' }}>
+              <fieldset className="fieldset-formulario">
                 <legend className="separador-formulario">Datos de contacto</legend>
                 <label htmlFor="emp-correo" className="sr-only">Correo electrónico</label>
                 <input type="email" id="emp-correo" placeholder="Correo electrónico" name="correo" required value={form.correo} onChange={manejarCambio} autoComplete="email" />
@@ -147,7 +147,7 @@ export default function FormularioRegistroEmpleado() {
 
             {/* Columna derecha */}
             <div className="columna-formulario">
-              <fieldset style={{ border: 'none', padding: 0, margin: '0 0 1.5rem 0' }}>
+              <fieldset className="fieldset-formulario">
                 <legend className="separador-formulario">Credenciales</legend>
                 <label htmlFor="emp-password" className="sr-only">Contraseña</label>
                 <input type="password" id="emp-password" placeholder="Contraseña" name="contrasenaCuenta" required value={form.contrasenaCuenta} onChange={manejarCambio} autoComplete="new-password" />
@@ -156,7 +156,7 @@ export default function FormularioRegistroEmpleado() {
                 <input type="password" id="emp-repeat-password" placeholder="Repetir contraseña" name="repetirContrasena" required value={form.repetirContrasena} onChange={manejarCambio} autoComplete="new-password" />
               </fieldset>
 
-              <fieldset style={{ border: 'none', padding: 0, margin: '0 0 1.5rem 0' }}>
+              <fieldset className="fieldset-formulario">
                 <legend className="separador-formulario">País</legend>
                 <label htmlFor="emp-pais" className="sr-only">País</label>
                 <select id="emp-pais" name="idpais" value={form.idpais} onChange={manejarCambio} autoComplete="country">

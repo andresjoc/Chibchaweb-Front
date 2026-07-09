@@ -147,7 +147,7 @@ export default function FormularioRegistro() {
           <form onSubmit={manejarSubmit} className="form-dos-columnas">
             {/* Columna izquierda */}
             <div className="columna-formulario">
-              <fieldset style={{ border: 'none', padding: 0, margin: '0 0 1.5rem 0' }}>
+              <fieldset className="fieldset-formulario">
                 <legend className="separador-formulario">Datos personales</legend>
                 <label htmlFor="reg-nombre" className="sr-only">Nombre completo</label>
                 <input type="text" id="reg-nombre" placeholder="Nombre completo" name="nombreCuenta" required value={form.nombreCuenta} onChange={manejarCambio} autoComplete="name" />
@@ -159,7 +159,7 @@ export default function FormularioRegistro() {
                 <input type="text" id="reg-direccion" placeholder="Dirección (opcional)" name="direccion" value={form.direccion} onChange={manejarCambio} autoComplete="street-address" />
               </fieldset>
 
-              <fieldset style={{ border: 'none', padding: 0, margin: '0 0 1.5rem 0' }}>
+              <fieldset className="fieldset-formulario">
                 <legend className="separador-formulario">Datos de contacto</legend>
                 <label htmlFor="reg-correo" className="sr-only">Correo electrónico</label>
                 <input type="email" id="reg-correo" placeholder="Correo electrónico" name="correo" required value={form.correo} onChange={manejarCambio} autoComplete="email" />
@@ -171,7 +171,7 @@ export default function FormularioRegistro() {
 
             {/* Columna derecha */}
             <div className="columna-formulario">
-              <fieldset style={{ border: 'none', padding: 0, margin: '0 0 1.5rem 0' }}>
+              <fieldset className="fieldset-formulario">
                 <legend className="separador-formulario">Credenciales</legend>
                 <label htmlFor="reg-password" className="sr-only">Contraseña</label>
                 <input type="password" id="reg-password" placeholder="Contraseña" name="contrasenaCuenta" required value={form.contrasenaCuenta} onChange={manejarCambio} autoComplete="new-password" />
@@ -180,7 +180,7 @@ export default function FormularioRegistro() {
                 <input type="password" id="reg-repeat-password" placeholder="Repetir contraseña" name="repetirContrasena" required value={form.repetirContrasena} onChange={manejarCambio} autoComplete="new-password" />
               </fieldset>
 
-              <fieldset style={{ border: 'none', padding: 0, margin: '0 0 1.5rem 0' }}>
+              <fieldset className="fieldset-formulario">
                 <legend className="separador-formulario">País</legend>
                 <label htmlFor="reg-pais" className="sr-only">País</label>
                 <select id="reg-pais" name="idpais" value={form.idpais} onChange={manejarCambio} autoComplete="country">
