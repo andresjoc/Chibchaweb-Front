@@ -54,6 +54,7 @@ import CuentaPostulado from "./pages/CuentaPostulado";
 
 // Ruta protegida
 import RutaProtegida from "./Components/RutaProtegida";
+import BotonSoporteFlotante from "./Components/BotonSoporteFlotante";
 
 import './styles.css';
 import AccessibilityWidget from "./Components/AccessibilityWidget";
@@ -141,6 +142,9 @@ function App() {
         esCoordinador ? <FooterCoordinador /> :
         <Footer />
       ) : <Footer />}
+
+      {/* Botón Flotante de Soporte Custom */}
+      <BotonSoporteFlotante />
 
       {/* Widget de accesibilidad global */}
       <AccessibilityWidget />

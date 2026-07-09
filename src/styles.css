@@ -397,6 +397,48 @@ textarea:focus,
   outline-offset: 2px !important;
 }
 
+/* ===== Botón Flotante de Soporte Custom ===== */
+#chatbase-bubble-button {
+  display: none !important;
+}
+
+.custom-support-float {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: var(--cafe);
+  color: var(--texto-boton);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(146, 70, 0, 0.35);
+  cursor: pointer;
+  z-index: 1900; /* Just below modals */
+  transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+body.dark-mode .custom-support-float {
+  box-shadow: 0 4px 16px rgba(255, 169, 77, 0.25);
+}
+
+.custom-support-float:hover {
+  transform: scale(1.1);
+  background-color: var(--cafe-hover);
+  box-shadow: 0 6px 20px rgba(146, 70, 0, 0.45);
+}
+
+body.dark-mode .custom-support-float:hover {
+  box-shadow: 0 6px 20px rgba(255, 169, 77, 0.35);
+}
+
+.custom-support-float:active {
+  transform: scale(0.95);
+}
+
 /* ===== ACCESIBILIDAD: Escalado de texto global (Afecta a todo el DOM) ===== */
 body.scale-small {
   zoom: 0.85 !important;
