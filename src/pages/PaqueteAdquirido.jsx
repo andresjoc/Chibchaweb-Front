@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import { useUser } from "../Context/UserContext";
 import "./PaqueteAdquirido.css";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faServer, faEnvelope, faHdd, faLock, faCloud, faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
+const iconMap = { WEB: faServer, CORREO: faEnvelope, GBENSSD: faHdd, SSL: faLock };
 
 export default function PaqueteAdquirido() {
   const API_URL = import.meta.env.VITE_API_URL;
@@ -147,7 +150,7 @@ const obtenerLimiteTamano = (tipo) => {
   return (
     <div className="paquete-wrapper">
       <div className="paquete-contenedor">
-        <h1>Plan {planInfo?.info?.nombrepaquetehosting || ""}</h1>
+        <h1><FontAwesomeIcon icon={faCloud} className="icono-titulo" aria-hidden="true" /> Plan {planInfo?.info?.nombrepaquetehosting || ""}</h1>
         {diasRestantes !== null && (
           <p className="paquete-descripcion">
             Te quedan <strong>{diasRestantes} días</strong> de tu plan actual.
@@ -161,8 +164,9 @@ const obtenerLimiteTamano = (tipo) => {
             {Object.entries(items).map(([clave, grupo]) => (
               <div className="seccion-amigable" key={clave}>
                 <div className="titulo-seccion-conteo">
-                <h2>{formatoNombreGrupo[clave] || clave}</h2>
-                <span className="cantidad-items">({grupo.length})</span>
+                  <FontAwesomeIcon icon={iconMap[clave] || faServer} className="icono-grupo" aria-hidden="true" />
+                  <h2>{formatoNombreGrupo[clave] || clave}</h2>
+                  <span className="cantidad-items">({grupo.length})</span>
                 </div>
 
                 <ul className="lista-items">
@@ -173,9 +177,7 @@ const obtenerLimiteTamano = (tipo) => {
                         {item.TAMANO && item.TAMANO !== "NA" && (
                           <span className="item-tamano">{item.TAMANO}</span>
                         )}
-                        <button className="btn-editar" onClick={() => iniciarEdicion(item)} type="button" aria-label={`Editar ${item.NOMBREITEM}`}>
-                          Editar
-                        </button>
+                        <button className="btn-editar" onClick={() => iniciarEdicion(item)} type="button" aria-label={`Editar ${item.NOMBREITEM}`}><FontAwesomeIcon icon={faCheck} className="icono-boton" aria-hidden="true" /> Editar</button>
                       </div>
                     </li>
                   ))}
@@ -244,8 +246,8 @@ const obtenerLimiteTamano = (tipo) => {
             )}
 
             <div className="acciones-edicion">
-              <button className="btn-guardar" onClick={guardarCambios} type="button">Guardar</button>
-              <button className="btn-cancelar" onClick={() => setEditandoItem(null)} type="button">Cancelar</button>
+              <button className="btn-guardar" onClick={guardarCambios} type="button"><FontAwesomeIcon icon={faCheck} className="icono-boton" aria-hidden="true" /> Guardar</button>
+              <button className="btn-cancelar" onClick={() => setEditandoItem(null)} type="button"><FontAwesomeIcon icon={faTimes} className="icono-boton" aria-hidden="true" /> Cancelar</button>
             </div>
           </div>
         </div>
