@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useUser } from "../Context/UserContext";
 import "./PaqueteAdquirido.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faServer, faEnvelope, faHdd, faLock, faCloud, faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faServer, faEnvelope, faHdd, faLock, faCloud, faCheck, faTimes, faClock, faStar } from '@fortawesome/free-solid-svg-icons';
 const iconMap = { WEB: faServer, CORREO: faEnvelope, GBENSSD: faHdd, SSL: faLock };
 
 export default function PaqueteAdquirido() {
@@ -150,10 +150,10 @@ const obtenerLimiteTamano = (tipo) => {
   return (
     <div className="paquete-wrapper">
       <div className="paquete-contenedor">
-        <h1><FontAwesomeIcon icon={faCloud} className="icono-titulo" aria-hidden="true" /> Plan {planInfo?.info?.nombrepaquetehosting || ""}</h1>
+        <h1><FontAwesomeIcon icon={faCloud} className="icono-titulo" aria-hidden="true" /> <FontAwesomeIcon icon={faStar} className="icono-titulo-star" aria-hidden="true" /> Plan {planInfo?.info?.nombrepaquetehosting || ""}</h1>
         {diasRestantes !== null && (
           <p className="paquete-descripcion">
-            Te quedan <strong>{diasRestantes} días</strong> de tu plan actual.
+            <FontAwesomeIcon icon={faClock} className="icono-dias" aria-hidden="true" /> Te quedan <strong>{diasRestantes} días</strong> de tu plan actual.
           </p>
         )}
 
@@ -175,7 +175,7 @@ const obtenerLimiteTamano = (tipo) => {
                       <span className="item-nombre">{item.NOMBREITEM}</span>
                       <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
                         {item.TAMANO && item.TAMANO !== "NA" && (
-                          <span className="item-tamano">{item.TAMANO}</span>
+                          <span className="item-tamano"><FontAwesomeIcon icon={faHdd} className="icono-tamano" aria-hidden="true" /> {item.TAMANO}</span>
                         )}
                         <button className="btn-editar" onClick={() => iniciarEdicion(item)} type="button" aria-label={`Editar ${item.NOMBREITEM}`}><FontAwesomeIcon icon={faCheck} className="icono-boton" aria-hidden="true" /> Editar</button>
                       </div>
@@ -205,7 +205,7 @@ const obtenerLimiteTamano = (tipo) => {
               }
             }}
           >
-            <button className="cerrar-modal" onClick={() => setEditandoItem(null)} type="button" aria-label="Cerrar diálogo">✕</button>
+            <button className="cerrar-modal" onClick={() => setEditandoItem(null)} type="button" aria-label="Cerrar diálogo"><FontAwesomeIcon icon={faTimes} className="icono-cerrar" aria-hidden="true" /></button>
             <h2 id="modal-titulo">Editar ítem</h2>
 
             <label htmlFor="edit-item-name">Nombre del ítem</label>
