@@ -287,9 +287,9 @@ body.dark-mode .modo-ia .buscador button {
 }
 
 .boton-carrito-metaphora:disabled {
-  background-color: #e2fbe8 !important;
-  color: #10b981 !important;
-  border: 1.5px solid #10b981 !important;
+  background-color: #e5e7eb !important;
+  color: #4b5563 !important;
+  border: 1.5px solid #9ca3af !important;
   box-shadow: none !important;
   cursor: not-allowed !important;
 }
@@ -304,9 +304,9 @@ body.dark-mode .boton-carrito-metaphora:hover:not(:disabled) {
 }
 
 body.dark-mode .boton-carrito-metaphora:disabled {
-  background-color: #1a3325 !important;
-  color: #10b981 !important;
-  border: 1.5px solid #10b981 !important;
+  background-color: #374151 !important;
+  color: #d1d5db !important;
+  border: 1.5px solid #4b5563 !important;
 }
 
 /* ==== Estilos para Botón Metáfora del Buscador (Alto Contraste) ==== */
