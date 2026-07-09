@@ -4,7 +4,17 @@ import logo from './resources/logo.png';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useUser } from '../Context/UserContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMoon, faCircleHalfStroke } from '@fortawesome/free-solid-svg-icons';
+import { 
+  faMoon, 
+  faCircleHalfStroke, 
+  faHouse, 
+  faServer, 
+  faUser, 
+  faGlobe, 
+  faLifeRing, 
+  faShoppingCart,
+  faTicket 
+} from '@fortawesome/free-solid-svg-icons';
 import { useAlerta } from "../Context/AlertaContext";
 
 function Navbar() {
@@ -83,31 +93,51 @@ function Navbar() {
             <>
               <li>
                 <NavLink to="/perfil" className="nav-link" onClick={handleMenuClick}>
-                  Mi perfil
+                  <FontAwesomeIcon icon={faUser} className="nav-icon" aria-hidden="true" /> Mi perfil
                 </NavLink>
               </li>
               <li>
                 <NavLink to="/vista-soporte-empleado" className="nav-link" onClick={handleMenuClick}>
-                  Tickets
+                  <FontAwesomeIcon icon={faTicket} className="nav-icon" aria-hidden="true" /> Tickets
                 </NavLink>
               </li>
             </>
           ) : (
             <>
-              <li><NavLink to="/" className="nav-link" onClick={handleMenuClick}>Inicio</NavLink></li>
+              <li>
+                <NavLink to="/" className="nav-link" onClick={handleMenuClick}>
+                  <FontAwesomeIcon icon={faHouse} className="nav-icon" aria-hidden="true" /> Inicio
+                </NavLink>
+              </li>
               {usuario?.tipocuenta !== "DISTRIBUIDOR" && (
-                <li><NavLink to="/planesHosting" className="nav-link" onClick={handleMenuClick}>Hosting</NavLink></li>
+                <li>
+                  <NavLink to="/planesHosting" className="nav-link" onClick={handleMenuClick}>
+                    <FontAwesomeIcon icon={faServer} className="nav-icon" aria-hidden="true" /> Hosting
+                  </NavLink>
+                </li>
               )}
-              <li><NavLink to="/perfil" className="nav-link" onClick={handleMenuClick}>Mi perfil</NavLink></li>
-              <li><NavLink to="/DominiosAdquiridos" className="nav-link" onClick={handleMenuClick}>Mis dominios</NavLink></li>
-              <li><NavLink to="/soporte" className="nav-link" onClick={handleMenuClick}>Soporte</NavLink></li>
+              <li>
+                <NavLink to="/perfil" className="nav-link" onClick={handleMenuClick}>
+                  <FontAwesomeIcon icon={faUser} className="nav-icon" aria-hidden="true" /> Mi perfil
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/DominiosAdquiridos" className="nav-link" onClick={handleMenuClick}>
+                  <FontAwesomeIcon icon={faGlobe} className="nav-icon" aria-hidden="true" /> Mis dominios
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/soporte" className="nav-link" onClick={handleMenuClick}>
+                  <FontAwesomeIcon icon={faLifeRing} className="nav-icon" aria-hidden="true" /> Soporte
+                </NavLink>
+              </li>
             </>
           )}
         </ul>
 
         {!esTecnico && (
           <button className="cart-button" onClick={irAlCarrito} type="button" aria-label="Ver el carrito de compras">
-            Carrito
+            <FontAwesomeIcon icon={faShoppingCart} className="nav-icon" aria-hidden="true" /> Carrito
           </button>
         )}
 

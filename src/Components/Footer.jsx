@@ -2,6 +2,8 @@ import './Footer.css';
 import '@fortawesome/fontawesome-free/css/all.min.css'; // Importar Font Awesome completo
 import { NavLink } from 'react-router-dom';
 import { useUser } from '../Context/UserContext';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHouse, faServer, faLifeRing, faSignInAlt, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 
 function Footer() {
   const { usuario } = useUser();
@@ -52,22 +54,32 @@ function Footer() {
         <nav aria-label="Navegación del pie de página">
           <ul className="footer-links">
             <li>
-              <NavLink to="/" className="nav-link">Inicio</NavLink>
+              <NavLink to="/" className="nav-link">
+                <FontAwesomeIcon icon={faHouse} className="footer-nav-icon" aria-hidden="true" /> Inicio
+              </NavLink>
             </li>
             <li>
-              <NavLink to="/planesHosting" className="nav-link">Hosting</NavLink>
+              <NavLink to="/planesHosting" className="nav-link">
+                <FontAwesomeIcon icon={faServer} className="footer-nav-icon" aria-hidden="true" /> Hosting
+              </NavLink>
             </li>
             {usuario ? (
               <li>
-                <NavLink to="/soporte" className="nav-link">Soporte</NavLink>
+                <NavLink to="/soporte" className="nav-link">
+                  <FontAwesomeIcon icon={faLifeRing} className="footer-nav-icon" aria-hidden="true" /> Soporte
+                </NavLink>
               </li>
             ) : (
               <li>
-                <NavLink to="/login" className="nav-link">Iniciar sesión</NavLink>
+                <NavLink to="/login" className="nav-link">
+                  <FontAwesomeIcon icon={faSignInAlt} className="footer-nav-icon" aria-hidden="true" /> Iniciar sesión
+                </NavLink>
               </li>
             )}
             <li>
-              <NavLink to="/contacto" className="nav-link">Contacto</NavLink>
+              <NavLink to="/contacto" className="nav-link">
+                <FontAwesomeIcon icon={faEnvelope} className="footer-nav-icon" aria-hidden="true" /> Contacto
+              </NavLink>
             </li>
           </ul>
         </nav>

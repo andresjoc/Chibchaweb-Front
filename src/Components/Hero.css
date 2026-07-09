@@ -187,3 +187,7 @@ body.dark-mode .modo-ia .hero-button {
   animation: brillar-hero-dark 2.2s ease-in-out infinite;
   border: 1px solid #FFA94D;
 }
+
+.btn-icon {
+  margin-right: 6px;
+}

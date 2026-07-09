@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faMagnifyingGlass, faGlobe, faBrain } from '@fortawesome/free-solid-svg-icons'
 import './Hero.css'
 
 function Hero() {
@@ -26,7 +28,7 @@ function Hero() {
           onClick={() => setTipoDominio('normal')}
           aria-pressed={tipoDominio === 'normal'}
         >
-          Dominio específico
+          <FontAwesomeIcon icon={faGlobe} className="btn-icon" aria-hidden="true" /> Dominio específico
         </button>
         <button
           type="button"
@@ -34,7 +36,7 @@ function Hero() {
           onClick={() => setTipoDominio('ia')}
           aria-pressed={tipoDominio === 'ia'}
         >
-          Generar Dominio con IA
+          <FontAwesomeIcon icon={faBrain} className="btn-icon" aria-hidden="true" /> IA
         </button>
       </div>
 
@@ -52,7 +54,7 @@ function Hero() {
           className="hero-input"
         />
         <button className="hero-button" onClick={handleBuscar} type="button">
-          Buscar dominio
+          <FontAwesomeIcon icon={faMagnifyingGlass} className="btn-icon" aria-hidden="true" /> Buscar dominio
         </button>
       </div>
     </section>

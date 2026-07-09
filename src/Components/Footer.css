@@ -99,3 +99,8 @@ body.dark-mode .footer-copy {
   color: #007bff; /* Cambia por el color principal de tu marca */
 }
 
+.footer-nav-icon {
+  margin-right: 6px;
+  font-size: 13px;
+}
+
