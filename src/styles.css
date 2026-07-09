@@ -395,4 +395,61 @@ textarea:focus,
 [tabindex="0"]:focus {
   outline: 3px solid #ff9d2b !important;
   outline-offset: 2px !important;
+}
+
+/* ===== ACCESIBILIDAD: Escalado de texto global (Afecta a todo el DOM) ===== */
+body.scale-small {
+  zoom: 0.85 !important;
+  -moz-transform: scale(0.85);
+  -moz-transform-origin: top left;
+}
+body.scale-large {
+  zoom: 1.20 !important;
+  -moz-transform: scale(1.20);
+  -moz-transform-origin: top left;
+}
+body.scale-xlarge {
+  zoom: 1.35 !important;
+  -moz-transform: scale(1.35);
+  -moz-transform-origin: top left;
+}
+
+/* ===== ACCESIBILIDAD: Alto Contraste (Negro y Amarillo) ===== */
+body.alto-contraste {
+  background-color: #000000 !important;
+  color: #ffff00 !important;
+}
+body.alto-contraste * {
+  background-color: #000000 !important;
+  color: #ffff00 !important;
+  border-color: #ffff00 !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+}
+body.alto-contraste a, 
+body.alto-contraste a * {
+  color: #00ffff !important;
+  text-decoration: underline !important;
+}
+body.alto-contraste button,
+body.alto-contraste select,
+body.alto-contraste input {
+  background-color: #000000 !important;
+  color: #ffff00 !important;
+  border: 2px solid #ffff00 !important;
+}
+body.alto-contraste button:hover,
+body.alto-contraste button:focus {
+  background-color: #ffff00 !important;
+  color: #000000 !important;
+}
+
+/* ===== ACCESIBILIDAD: Monocromo (Escala de Grises) ===== */
+body.monocromo {
+  filter: grayscale(100%) !important;
+}
+
+/* ===== ACCESIBILIDAD: Subrayar Enlaces ===== */
+body.subrayar-enlaces a {
+  text-decoration: underline !important;
 }

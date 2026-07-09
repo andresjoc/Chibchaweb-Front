@@ -1,13 +1,11 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useLanguage } from '../Context/LanguageContext'
 import './Hero.css'
 
 function Hero() {
   const [dominio, setDominio] = useState('')
   const [tipoDominio, setTipoDominio] = useState('normal') // ← para saber si es IA
   const navigate = useNavigate()
-  const { t } = useLanguage()
 
   const handleBuscar = () => {
     if (dominio.trim() !== '') {
@@ -17,8 +15,8 @@ function Hero() {
 
   return (
     <section className={`hero-section ${tipoDominio === 'ia' ? 'modo-ia' : ''}`}>
-      <h1 className="hero-title">{t('potenciaOnline')}</h1>
-      <p className="hero-subtitle">{t('encuentraPerfecto')}</p>
+      <h1 className="hero-title">¡Potencia tu presencia online!</h1>
+      <p className="hero-subtitle">Encuentra el nombre perfecto para tu sitio web</p>
 
       {/* Selector de tipo de dominio */}
       <div className="hero-toggle" role="group" aria-label="Seleccionar tipo de búsqueda de dominio">
@@ -28,7 +26,7 @@ function Hero() {
           onClick={() => setTipoDominio('normal')}
           aria-pressed={tipoDominio === 'normal'}
         >
-          {t('especifico')}
+          Dominio específico
         </button>
         <button
           type="button"
@@ -36,25 +34,25 @@ function Hero() {
           onClick={() => setTipoDominio('ia')}
           aria-pressed={tipoDominio === 'ia'}
         >
-          {t('generarIA')}
+          Generar Dominio con IA
         </button>
       </div>
 
       {/* Input + botón */}
       <div className="hero-search">
         <label htmlFor="hero-search-input" className="sr-only">
-          {tipoDominio === 'ia' ? t('placeholderIA') : t('placeholderBuscar')}
+          {tipoDominio === 'ia' ? "Describe tu idea de dominio" : "Buscar nombre de dominio específico"}
         </label>
         <input
           type="text"
           id="hero-search-input"
-          placeholder={tipoDominio === 'ia' ? t('placeholderIA') + "..." : t('placeholderBuscar') + ".com"}
+          placeholder={tipoDominio === 'ia' ? "Describe tu idea..." : "tusitio.com"}
           value={dominio}
           onChange={(e) => setDominio(e.target.value)}
           className="hero-input"
         />
         <button className="hero-button" onClick={handleBuscar} type="button">
-          {t('buscarDominioBtn')}
+          Buscar dominio
         </button>
       </div>
     </section>

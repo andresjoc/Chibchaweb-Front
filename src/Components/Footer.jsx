@@ -2,11 +2,9 @@ import './Footer.css';
 import '@fortawesome/fontawesome-free/css/all.min.css'; // Importar Font Awesome completo
 import { NavLink } from 'react-router-dom';
 import { useUser } from '../Context/UserContext';
-import { useLanguage } from '../Context/LanguageContext';
 
 function Footer() {
   const { usuario } = useUser();
-  const { t } = useLanguage();
 
   return (
     <footer className="footer">
@@ -21,7 +19,7 @@ function Footer() {
         {/* Marca y redes */}
         <div className="footer-brand">
           <h3>ChibchaWeb</h3>
-          <p>{t('puertaDigital')}</p>
+          <p>Tu puerta al mundo digital</p>
           <div className="social-links">
             <a
               href="https://www.facebook.com/profile.php?id=61579028858597"
@@ -51,25 +49,25 @@ function Footer() {
         </div>
 
         {/* Navegación */}
-        <nav aria-label={t('piePagina')}>
+        <nav aria-label="Navegación del pie de página">
           <ul className="footer-links">
             <li>
-              <NavLink to="/" className="nav-link">{t('inicio')}</NavLink>
+              <NavLink to="/" className="nav-link">Inicio</NavLink>
             </li>
             <li>
-              <NavLink to="/planesHosting" className="nav-link">{t('hosting')}</NavLink>
+              <NavLink to="/planesHosting" className="nav-link">Hosting</NavLink>
             </li>
             {usuario ? (
               <li>
-                <NavLink to="/soporte" className="nav-link">{t('soporte')}</NavLink>
+                <NavLink to="/soporte" className="nav-link">Soporte</NavLink>
               </li>
             ) : (
               <li>
-                <NavLink to="/login" className="nav-link">{t('iniciarSesion')}</NavLink>
+                <NavLink to="/login" className="nav-link">Iniciar sesión</NavLink>
               </li>
             )}
             <li>
-              <NavLink to="/contacto" className="nav-link">{t('contacto')}</NavLink>
+              <NavLink to="/contacto" className="nav-link">Contacto</NavLink>
             </li>
           </ul>
         </nav>

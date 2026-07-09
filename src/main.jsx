@@ -6,7 +6,6 @@ import { UserProvider } from './Context/UserContext';
 import { ExtensionProvider } from "./Context/ExtensionContext";
 import { AlertaProvider } from "./Context/AlertaContext"; 
 import { StatsProvider } from "./Context/StatsContext"; 
-import { LanguageProvider } from "./Context/LanguageContext";
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -15,9 +14,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <ExtensionProvider>
           <AlertaProvider>
             <StatsProvider>
-              <LanguageProvider>
-                <App />
-              </LanguageProvider>
+              <App />
             </StatsProvider>
           </AlertaProvider>
         </ExtensionProvider>

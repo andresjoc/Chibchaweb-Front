@@ -1,35 +1,87 @@
 import React, { useState, useEffect } from 'react';
-import { useLanguage } from '../Context/LanguageContext';
 import './AccessibilityWidget.css';
 
 export default function AccessibilityWidget() {
   const [panelAbierto, setPanelAbierto] = useState(false);
-  const { idioma, cambiarIdioma } = useLanguage();
-  const [tamanio, setTamanio] = useState(100);
+  const [scale, setScale] = useState('normal'); // 'small' | 'normal' | 'large' | 'xlarge'
+  const [altoContraste, setAltoContraste] = useState(false);
+  const [monocromo, setMonocromo] = useState(false);
+  const [subrayarEnlaces, setSubrayarEnlaces] = useState(false);
 
+  // Cargar preferencias iniciales al montar
   useEffect(() => {
-    const savedSize = localStorage.getItem('fontSizePct');
-    if (savedSize) {
-      const sizeNum = Number(savedSize);
-      setTamanio(sizeNum);
-      document.documentElement.style.fontSize = `${sizeNum}%`;
-    }
+    const savedScale = localStorage.getItem('access_scale') || 'normal';
+    const savedContrast = localStorage.getItem('access_contrast') === 'true';
+    const savedMono = localStorage.getItem('access_mono') === 'true';
+    const savedUnderline = localStorage.getItem('access_underline') === 'true';
+
+    setScale(savedScale);
+    setAltoContraste(savedContrast);
+    setMonocromo(savedMono);
+    setSubrayarEnlaces(savedUnderline);
+
+    aplicarClases(savedScale, savedContrast, savedMono, savedUnderline);
   }, []);
 
-  const cambiarTamanioTexto = (accion) => {
-    let nuevoTamanio = 100;
-    if (accion === 'aumentar') {
-      nuevoTamanio = Math.min(tamanio + 10, 140);
-    } else if (accion === 'disminuir') {
-      nuevoTamanio = Math.max(tamanio - 10, 80);
-    }
-    setTamanio(nuevoTamanio);
-    document.documentElement.style.fontSize = `${nuevoTamanio}%`;
-    localStorage.setItem('fontSizePct', nuevoTamanio);
+  const aplicarClases = (currScale, currContrast, currMono, currUnderline) => {
+    // Escala de texto
+    document.body.classList.remove('scale-small', 'scale-large', 'scale-xlarge');
+    if (currScale === 'small') document.body.classList.add('scale-small');
+    else if (currScale === 'large') document.body.classList.add('scale-large');
+    else if (currScale === 'xlarge') document.body.classList.add('scale-xlarge');
+
+    // Alto Contraste
+    if (currContrast) document.body.classList.add('alto-contraste');
+    else document.body.classList.remove('alto-contraste');
+
+    // Monocromo
+    if (currMono) document.body.classList.add('monocromo');
+    else document.body.classList.remove('monocromo');
+
+    // Subrayar Enlaces
+    if (currUnderline) document.body.classList.add('subrayar-enlaces');
+    else document.body.classList.remove('subrayar-enlaces');
   };
 
-  const togglePanel = () => {
-    setPanelAbierto(!panelAbierto);
+  const cambiarEscala = (nuevaEscala) => {
+    setScale(nuevaEscala);
+    localStorage.setItem('access_scale', nuevaEscala);
+    aplicarClases(nuevaEscala, altoContraste, monocromo, subrayarEnlaces);
+  };
+
+  const toggleContrast = () => {
+    const val = !altoContraste;
+    setAltoContraste(val);
+    localStorage.setItem('access_contrast', val);
+    aplicarClases(scale, val, monocromo, subrayarEnlaces);
+  };
+
+  const toggleMono = () => {
+    const val = !monocromo;
+    setMonocromo(val);
+    localStorage.setItem('access_mono', val);
+    aplicarClases(scale, altoContraste, val, subrayarEnlaces);
+  };
+
+  const toggleUnderline = () => {
+    const val = !subrayarEnlaces;
+    setSubrayarEnlaces(val);
+    localStorage.setItem('access_underline', val);
+    aplicarClases(scale, altoContraste, monocromo, val);
+  };
+
+  const restablecerTodo = () => {
+    setScale('normal');
+    setAltoContraste(false);
+    setMonocromo(false);
+    setSubrayarEnlaces(false);
+
+    localStorage.setItem('access_scale', 'normal');
+    localStorage.setItem('access_contrast', 'false');
+    localStorage.setItem('access_mono', 'false');
+    localStorage.setItem('access_underline', 'false');
+
+    aplicarClases('normal', false, false, false);
   };
 
   return (
@@ -37,7 +89,7 @@ export default function AccessibilityWidget() {
       {/* Botón flotante accesible */}
       <button
         className="btn-flotante-accesibilidad"
-        onClick={togglePanel}
+        onClick={() => setPanelAbierto(!panelAbierto)}
         aria-label={panelAbierto ? "Cerrar menú de accesibilidad" : "Abrir opciones de accesibilidad"}
         aria-expanded={panelAbierto}
         type="button"
@@ -53,13 +105,11 @@ export default function AccessibilityWidget() {
           aria-labelledby="panel-titulo"
         >
           <div className="panel-header">
-            <h3 id="panel-titulo">
-              {idioma === 'es' ? 'Opciones de Accesibilidad' : 'Accessibility Options'}
-            </h3>
+            <h3 id="panel-titulo">Ajustes de Accesibilidad</h3>
             <button
               className="btn-cerrar-panel"
               onClick={() => setPanelAbierto(false)}
-              aria-label={idioma === 'es' ? 'Cerrar panel' : 'Close panel'}
+              aria-label="Cerrar panel de accesibilidad"
               type="button"
             >
               ✕
@@ -69,64 +119,82 @@ export default function AccessibilityWidget() {
           <div className="panel-body">
             {/* Control de tamaño de texto */}
             <div className="control-grupo">
-              <h4>{idioma === 'es' ? 'Tamaño del texto' : 'Text size'}</h4>
+              <h4>Tamaño de Interfaz</h4>
               <div className="botones-control">
                 <button
                   type="button"
-                  onClick={() => cambiarTamanioTexto('disminuir')}
-                  aria-label={idioma === 'es' ? 'Disminuir tamaño del texto' : 'Decrease text size'}
-                  title={idioma === 'es' ? 'Disminuir tamaño' : 'Decrease size'}
+                  onClick={() => cambiarEscala('small')}
+                  className={scale === 'small' ? 'activo' : ''}
+                  aria-pressed={scale === 'small'}
                 >
                   A-
                 </button>
                 <button
                   type="button"
-                  onClick={() => {
-                    setTamanio(100);
-                    document.documentElement.style.fontSize = '100%';
-                    localStorage.setItem('fontSizePct', 100);
-                  }}
-                  aria-label={idioma === 'es' ? 'Restablecer tamaño del texto' : 'Reset text size'}
-                  title={idioma === 'es' ? 'Restablecer tamaño' : 'Reset size'}
+                  onClick={() => cambiarEscala('normal')}
+                  className={scale === 'normal' ? 'activo' : ''}
+                  aria-pressed={scale === 'normal'}
                 >
-                  A
+                  Normal
                 </button>
                 <button
                   type="button"
-                  onClick={() => cambiarTamanioTexto('aumentar')}
-                  aria-label={idioma === 'es' ? 'Aumentar tamaño del texto' : 'Increase text size'}
-                  title={idioma === 'es' ? 'Aumentar tamaño' : 'Increase size'}
+                  onClick={() => cambiarEscala('large')}
+                  className={scale === 'large' ? 'activo' : ''}
+                  aria-pressed={scale === 'large'}
                 >
                   A+
                 </button>
+                <button
+                  type="button"
+                  onClick={() => cambiarEscala('xlarge')}
+                  className={scale === 'xlarge' ? 'activo' : ''}
+                  aria-pressed={scale === 'xlarge'}
+                >
+                  A++
+                </button>
               </div>
-              <small className="tamanio-actual">
-                {idioma === 'es' ? 'Escala actual:' : 'Current scale:'} {tamanio}%
-              </small>
             </div>
 
-            {/* Control de idioma */}
+            {/* Opciones visuales */}
             <div className="control-grupo">
-              <h4>{idioma === 'es' ? 'Idioma de lectura' : 'Language'}</h4>
-              <div className="botones-control">
+              <h4>Herramientas Visuales</h4>
+              <div className="botones-opciones">
                 <button
                   type="button"
-                  onClick={() => cambiarIdioma('es')}
-                  className={idioma === 'es' ? 'activo' : ''}
-                  aria-pressed={idioma === 'es'}
+                  className={`btn-toggle-option ${altoContraste ? 'activo' : ''}`}
+                  onClick={toggleContrast}
+                  aria-pressed={altoContraste}
                 >
-                  Español
+                  🌓 Alto Contraste
                 </button>
                 <button
                   type="button"
-                  onClick={() => cambiarIdioma('en')}
-                  className={idioma === 'en' ? 'activo' : ''}
-                  aria-pressed={idioma === 'en'}
+                  className={`btn-toggle-option ${monocromo ? 'activo' : ''}`}
+                  onClick={toggleMono}
+                  aria-pressed={monocromo}
                 >
-                  English
+                  ⚫ Escala de Grises
+                </button>
+                <button
+                  type="button"
+                  className={`btn-toggle-option ${subrayarEnlaces ? 'activo' : ''}`}
+                  onClick={toggleUnderline}
+                  aria-pressed={subrayarEnlaces}
+                >
+                  🔗 Subrayar Enlaces
                 </button>
               </div>
             </div>
+
+            {/* Restablecer ajustes */}
+            <button
+              className="btn-restablecer-accesibilidad"
+              onClick={restablecerTodo}
+              type="button"
+            >
+              Restablecer todo
+            </button>
           </div>
         </div>
       )}
