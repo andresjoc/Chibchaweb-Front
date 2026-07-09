@@ -3,7 +3,7 @@ import '@fortawesome/fontawesome-free/css/all.min.css'; // Importar Font Awesome
 import { NavLink } from 'react-router-dom';
 import { useUser } from '../Context/UserContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHouse, faServer, faLifeRing, faSignInAlt, faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { faHouse, faCloud, faHeadset, faSignInAlt, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 
 function Footer() {
   const { usuario } = useUser();
@@ -60,13 +60,13 @@ function Footer() {
             </li>
             <li>
               <NavLink to="/planesHosting" className="nav-link">
-                <FontAwesomeIcon icon={faServer} className="footer-nav-icon" aria-hidden="true" /> Hosting
+                <FontAwesomeIcon icon={faCloud} className="footer-nav-icon" aria-hidden="true" /> Hosting
               </NavLink>
             </li>
             {usuario ? (
               <li>
                 <NavLink to="/soporte" className="nav-link">
-                  <FontAwesomeIcon icon={faLifeRing} className="footer-nav-icon" aria-hidden="true" /> Soporte
+                  <FontAwesomeIcon icon={faHeadset} className="footer-nav-icon" aria-hidden="true" /> Soporte
                 </NavLink>
               </li>
             ) : (

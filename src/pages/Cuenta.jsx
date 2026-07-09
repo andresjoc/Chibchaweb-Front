@@ -1,6 +1,18 @@
-import React, { useState, useEffect } from "react";
 import { useUser } from "../Context/UserContext";
 import { useNavigate } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { 
+  faUser, 
+  faAddressCard, 
+  faEnvelope, 
+  faPhone, 
+  faMapPin, 
+  faGlobe, 
+  faLock, 
+  faPen, 
+  faCheck, 
+  faTimes 
+} from "@fortawesome/free-solid-svg-icons";
 import "./Cuenta.css";
 import "./CuentaDistribuidor.css";
 import { FiLogOut } from "react-icons/fi";
@@ -195,29 +207,55 @@ const guardarCambios = async () => {
 
   return (
     <div className="cuenta-container">
-      <h2>Mi Perfil</h2>
+      {/* Sección de avatar y tipo de cuenta */}
+      <div className="perfil-avatar-seccion">
+        <div className="avatar-circulo" aria-hidden="true">
+          {usuario.nombrecuenta?.charAt(0).toUpperCase()}
+        </div>
+        <div className="avatar-meta">
+          <h2>{usuario.nombrecuenta}</h2>
+          <span className="badge-tipo-cuenta">{usuario.tipocuenta}</span>
+        </div>
+      </div>
+
+      <div className="linea-separadora" />
 
       <div className="cuenta-info">
         {modoEdicion ? (
           <>
-            <div className="cuenta-dato">
-              <label htmlFor="perfil-nombre"><strong>Nombre:</strong></label>
+            <div className="cuenta-dato-edicion">
+              <label htmlFor="perfil-nombre">
+                <FontAwesomeIcon icon={faUser} className="icono-dato" aria-hidden="true" />
+                <strong>Nombre:</strong>
+              </label>
               <input id="perfil-nombre" name="NOMBRECUENTA" value={formData.NOMBRECUENTA} onChange={handleInputChange} autoComplete="name" />
             </div>
-            <div className="cuenta-dato">
-              <label htmlFor="perfil-correo"><strong>Correo:</strong></label>
+            <div className="cuenta-dato-edicion">
+              <label htmlFor="perfil-correo">
+                <FontAwesomeIcon icon={faEnvelope} className="icono-dato" aria-hidden="true" />
+                <strong>Correo:</strong>
+              </label>
               <input id="perfil-correo" name="CORREO" value={formData.CORREO} onChange={handleInputChange} autoComplete="email" />
             </div>
-            <div className="cuenta-dato">
-              <label htmlFor="perfil-telefono"><strong>Teléfono:</strong></label>
+            <div className="cuenta-dato-edicion">
+              <label htmlFor="perfil-telefono">
+                <FontAwesomeIcon icon={faPhone} className="icono-dato" aria-hidden="true" />
+                <strong>Teléfono:</strong>
+              </label>
               <input id="perfil-telefono" name="TELEFONO" value={formData.TELEFONO} onChange={handleInputChange} autoComplete="tel" />
             </div>
-            <div className="cuenta-dato">
-              <label htmlFor="perfil-direccion"><strong>Dirección:</strong></label>
+            <div className="cuenta-dato-edicion">
+              <label htmlFor="perfil-direccion">
+                <FontAwesomeIcon icon={faMapPin} className="icono-dato" aria-hidden="true" />
+                <strong>Dirección:</strong>
+              </label>
               <input id="perfil-direccion" name="DIRECCION" value={formData.DIRECCION} onChange={handleInputChange} autoComplete="street-address" />
             </div>
-            <div className="cuenta-dato">
-              <label htmlFor="perfil-pais"><strong>País:</strong></label>
+            <div className="cuenta-dato-edicion">
+              <label htmlFor="perfil-pais">
+                <FontAwesomeIcon icon={faGlobe} className="icono-dato" aria-hidden="true" />
+                <strong>País:</strong>
+              </label>
               <select id="perfil-pais" name="IDPAIS" value={formData.IDPAIS} onChange={handleInputChange} autoComplete="country">
                 {Object.entries(paises).map(([codigo, nombre]) => (
                   <option key={codigo} value={codigo}>{nombre}</option>
@@ -226,14 +264,50 @@ const guardarCambios = async () => {
             </div>
           </>
         ) : (
-          <>
-            <div className="cuenta-dato"><strong>Nombre:</strong><span>{usuario.nombrecuenta}</span></div>
-            <div className="cuenta-dato"><strong>CC:</strong><span>{usuario.identificacion}</span></div>
-            <div className="cuenta-dato"><strong>Correo:</strong><span>{usuario.correo}</span></div>
-            <div className="cuenta-dato"><strong>Teléfono:</strong><span>{usuario.telefono || "No registrado"}</span></div>
-            <div className="cuenta-dato"><strong>Dirección:</strong><span>{usuario.direccion || "No registrada"}</span></div>
-            <div className="cuenta-dato"><strong>País:</strong><span>{paises[usuario.pais] || usuario.pais}</span></div>
-          </>
+          <div className="perfil-detalles-grid">
+            <div className="detalle-tarjeta">
+              <FontAwesomeIcon icon={faUser} className="icono-detalle" aria-hidden="true" />
+              <div className="detalle-texto">
+                <span className="label">Nombre completo</span>
+                <span className="valor">{usuario.nombrecuenta}</span>
+              </div>
+            </div>
+            <div className="detalle-tarjeta">
+              <FontAwesomeIcon icon={faAddressCard} className="icono-detalle" aria-hidden="true" />
+              <div className="detalle-texto">
+                <span className="label">Cédula / Identificación</span>
+                <span className="valor">{usuario.identificacion}</span>
+              </div>
+            </div>
+            <div className="detalle-tarjeta">
+              <FontAwesomeIcon icon={faEnvelope} className="icono-detalle" aria-hidden="true" />
+              <div className="detalle-texto">
+                <span className="label">Correo electrónico</span>
+                <span className="valor">{usuario.correo}</span>
+              </div>
+            </div>
+            <div className="detalle-tarjeta">
+              <FontAwesomeIcon icon={faPhone} className="icono-detalle" aria-hidden="true" />
+              <div className="detalle-texto">
+                <span className="label">Teléfono celular</span>
+                <span className="valor">{usuario.telefono || "No registrado"}</span>
+              </div>
+            </div>
+            <div className="detalle-tarjeta">
+              <FontAwesomeIcon icon={faMapPin} className="icono-detalle" aria-hidden="true" />
+              <div className="detalle-texto">
+                <span className="label">Dirección física</span>
+                <span className="valor">{usuario.direccion || "No registrada"}</span>
+              </div>
+            </div>
+            <div className="detalle-tarjeta">
+              <FontAwesomeIcon icon={faGlobe} className="icono-detalle" aria-hidden="true" />
+              <div className="detalle-texto">
+                <span className="label">País de residencia</span>
+                <span className="valor">{paises[usuario.pais] || usuario.pais}</span>
+              </div>
+            </div>
+          </div>
         )}
       </div>
 

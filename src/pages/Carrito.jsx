@@ -2,7 +2,15 @@ import './Carrito.css';
 import { useEffect, useState } from 'react';
 import { useUser } from '../Context/UserContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import { 
+  faTrash, 
+  faGlobe, 
+  faTag, 
+  faLock, 
+  faCircleCheck, 
+  faShoppingCart 
+} from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
 
 function Carrito() {
   const { usuario } = useUser();
@@ -206,7 +214,7 @@ const manejarPago = async () => {
 
   return (
     <main className="carrito">
-      <h1>Carrito <span className="cantidad-items">{items.length} items</span></h1>
+      <h1>Carrito <span className="cantidad-items">({items.length} items)</span></h1>
       <div className="linea-separadora" />
 
       {cargando ? (
@@ -214,19 +222,30 @@ const manejarPago = async () => {
       ) : error ? (
         <p className="mensaje-error">{error}</p>
       ) : items.length === 0 ? (
-        <p className="carrito-vacio">Tu carrito está vacío.</p>
+        <div className="carrito-vacio-contenedor">
+          <FontAwesomeIcon icon={faShoppingCart} className="icono-vacio" aria-hidden="true" />
+          <h2>Tu carrito está vacío</h2>
+          <p>¡Busca el nombre de dominio perfecto e inicia tu proyecto web hoy mismo!</p>
+          <Link to="/dominios" className="btn-ir-buscar">
+            Buscar dominios
+          </Link>
+        </div>
       ) : (
         <div className="carrito-contenido">
           <div className="lista-dominios">
             {items.map((item, i) => (
               <div key={i} className="item-dominio">
-                <span className="check" aria-hidden="true">✔</span>
-                <span className="nombre">{item.nombre}</span>
+                <FontAwesomeIcon icon={faGlobe} className="icono-dominio-carrito" aria-hidden="true" />
+                <div className="info-item">
+                  <span className="nombre">{item.nombre}</span>
+                  <span className="badge-anual">Registro por 1 año</span>
+                </div>
                 <span className="precio">${item.precio.toLocaleString()} USD</span>
                 <button 
                   className="btn-eliminar" 
                   onClick={() => eliminarDominio(item.nombre)}
                   aria-label={`Eliminar dominio ${item.nombre} del carrito`}
+                  type="button"
                 >
                   <FontAwesomeIcon icon={faTrash} aria-hidden="true" />
                 </button>
@@ -252,6 +271,16 @@ const manejarPago = async () => {
               </div>
             )}
 
+            {/* Cupón mockup */}
+            <div className="cupon-mockup">
+              <label htmlFor="coupon-input" className="sr-only">Cupón de descuento</label>
+              <div className="cupon-input-box">
+                <FontAwesomeIcon icon={faTag} className="icono-cupon" aria-hidden="true" />
+                <input id="coupon-input" type="text" placeholder="Código de cupón" disabled />
+                <button type="button" disabled>Aplicar</button>
+              </div>
+            </div>
+
             <hr />
 
             <div className="linea total">
@@ -263,9 +292,16 @@ const manejarPago = async () => {
               className="btn-pago"
               onClick={manejarPago}
               disabled={pagando}
+              type="button"
             >
               {pagando ? "Procesando..." : "Realizar el pago →"}
             </button>
+
+            {/* Seguro SSL */}
+            <div className="pago-seguro-badge">
+              <FontAwesomeIcon icon={faLock} className="icono-seguro" aria-hidden="true" />
+              <span>Transacción 100% segura y protegida con cifrado SSL</span>
+            </div>
           </div>
         </div>
       )}

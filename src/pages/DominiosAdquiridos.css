@@ -425,6 +425,176 @@ body.dark-mode .modal-contenido .cancelar {
   color: #333 !important;
 }
 
+/* ===== NUEVAS METAFORAS VISUALES: Dominios Adquiridos ===== */
+.dominios-vacio-contenedor {
+  text-align: center;
+  padding: 60px 20px;
+  background-color: rgba(107, 59, 0, 0.05);
+  border: 2px dashed #c1a280;
+  border-radius: 16px;
+  max-width: 600px;
+  margin: 40px auto;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+}
+
+.dominios-vacio-contenedor h2 {
+  font-size: 24px;
+  color: #6b3b00;
+  margin-bottom: 12px;
+}
+
+.dominios-vacio-contenedor p {
+  font-size: 15px;
+  color: #666;
+  margin-bottom: 24px;
+}
+
+.icono-titulo-dominios {
+  font-size: 28px;
+  color: #5a2e00;
+  margin-right: 8px;
+}
+
+.bloque-izquierdo {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.icono-item-dominio {
+  font-size: 24px;
+  color: #a45200;
+}
+
+.nombre-y-badge {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.badge-estado {
+  font-size: 11px;
+  font-weight: bold;
+  padding: 2px 8px;
+  border-radius: 20px;
+  width: fit-content;
+}
+
+.badge-estado.activo {
+  background-color: rgba(76, 175, 80, 0.15);
+  color: #2e7d32;
+}
+
+.badge-estado.aviso {
+  background-color: rgba(255, 152, 0, 0.15);
+  color: #ef6c00;
+}
+
+.badge-estado.vencido {
+  background-color: rgba(244, 67, 54, 0.15);
+  color: #c62828;
+}
+
+.bloque-derecho {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.transfer-hint {
+  font-size: 13px;
+  font-weight: bold;
+  color: #924600;
+  background-color: rgba(146, 70, 0, 0.08);
+  padding: 6px 12px;
+  border-radius: 8px;
+  transition: background-color 0.2s, transform 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.dominio-item:hover .transfer-hint {
+  background-color: #924600;
+  color: #ffffff;
+  transform: translateX(4px);
+}
+
+.dominio-transferencia {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background-color: #fdf3ec;
+  padding: 12px;
+  border-radius: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #5a2e00;
+  margin-bottom: 20px;
+}
+
+.icono-transfer {
+  font-size: 20px;
+}
+
+/* Modo oscuro */
+body.dark-mode .dominios-vacio-contenedor {
+  background-color: rgba(255, 255, 255, 0.03);
+  border-color: #555;
+}
+
+body.dark-mode .dominios-vacio-contenedor h2 {
+  color: #FFA94D;
+}
+
+body.dark-mode .dominios-vacio-contenedor p {
+  color: #ccc;
+}
+
+body.dark-mode .icono-titulo-dominios {
+  color: #FFA94D;
+}
+
+body.dark-mode .icono-item-dominio {
+  color: #FFA94D;
+}
+
+body.dark-mode .transfer-hint {
+  color: #FFA94D;
+  background-color: rgba(255, 169, 77, 0.12);
+}
+
+body.dark-mode .dominio-item:hover .transfer-hint {
+  background-color: #FFA94D;
+  color: #1e1e1e;
+}
+
+body.dark-mode .badge-estado.activo {
+  background-color: rgba(129, 199, 132, 0.2);
+  color: #81c784;
+}
+
+body.dark-mode .badge-estado.aviso {
+  background-color: rgba(255, 183, 77, 0.2);
+  color: #ffb74d;
+}
+
+body.dark-mode .badge-estado.vencido {
+  background-color: rgba(229, 115, 115, 0.2);
+  color: #e57373;
+}
+
+@media (max-width: 600px) {
+  .bloque-derecho {
+    width: 100%;
+    justify-content: space-between;
+  }
+  .dominio-item {
+    gap: 12px !important;
+  }
+}
+
 @media (max-width: 600px) {
   .titulo-dominios {
     font-size: 24px;

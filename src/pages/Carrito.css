@@ -232,3 +232,179 @@ body.dark-mode .btn-eliminar:hover {
   background-color: rgba(255, 255, 255, 0.2);
   color: #ff5555; /* o blanco si lo prefieres */
 }
+
+/* ===== NUEVAS METAFORAS VISUALES: Carrito ===== */
+.carrito-vacio-contenedor {
+  text-align: center;
+  padding: 60px 20px;
+  background-color: rgba(107, 59, 0, 0.05);
+  border: 2px dashed #c1a280;
+  border-radius: 16px;
+  max-width: 600px;
+  margin: 40px auto;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+}
+
+.icono-vacio {
+  font-size: 64px;
+  color: #c1a280;
+  margin-bottom: 20px;
+}
+
+.carrito-vacio-contenedor h2 {
+  font-size: 24px;
+  color: #6b3b00;
+  margin-bottom: 12px;
+}
+
+.carrito-vacio-contenedor p {
+  font-size: 15px;
+  color: #666;
+  margin-bottom: 24px;
+}
+
+.btn-ir-buscar {
+  display: inline-block;
+  padding: 12px 24px;
+  background-color: #924600;
+  color: #ffffff;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background-color 0.2s;
+}
+
+.btn-ir-buscar:hover {
+  background-color: #7a3900;
+}
+
+.icono-dominio-carrito {
+  font-size: 24px;
+  color: #a45200;
+  margin-right: 16px;
+}
+
+.info-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.badge-anual {
+  font-size: 11px;
+  font-weight: bold;
+  background-color: rgba(164, 82, 0, 0.1);
+  color: #924600;
+  padding: 2px 8px;
+  border-radius: 20px;
+  width: fit-content;
+}
+
+.cupon-mockup {
+  margin: 20px 0 10px;
+}
+
+.cupon-input-box {
+  display: flex;
+  background-color: #ffffff;
+  border: 1px solid #c1a280;
+  border-radius: 6px;
+  overflow: hidden;
+  align-items: center;
+  padding-left: 10px;
+}
+
+.icono-cupon {
+  color: #a45200;
+  font-size: 14px;
+}
+
+.cupon-input-box input {
+  border: none;
+  background: none;
+  padding: 8px;
+  font-size: 13px;
+  flex: 1;
+  outline: none;
+}
+
+.cupon-input-box button {
+  background-color: #e9d8c8;
+  color: #6b3b00;
+  border: none;
+  padding: 8px 12px;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: not-allowed;
+  opacity: 0.8;
+}
+
+.pago-seguro-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 20px;
+  padding: 10px;
+  background-color: rgba(76, 175, 80, 0.08);
+  border: 1px solid rgba(76, 175, 80, 0.2);
+  border-radius: 8px;
+  font-size: 12px;
+  color: #2e7d32;
+}
+
+.icono-seguro {
+  font-size: 16px;
+}
+
+/* Oscuro */
+body.dark-mode .carrito-vacio-contenedor {
+  background-color: rgba(255, 255, 255, 0.03);
+  border-color: #555;
+}
+
+body.dark-mode .icono-vacio {
+  color: #FFA94D;
+}
+
+body.dark-mode .carrito-vacio-contenedor h2 {
+  color: #FFA94D;
+}
+
+body.dark-mode .carrito-vacio-contenedor p {
+  color: #ccc;
+}
+
+body.dark-mode .btn-ir-buscar {
+  background-color: #FFA94D;
+  color: #000;
+}
+
+body.dark-mode .icono-dominio-carrito {
+  color: #FFA94D;
+}
+
+body.dark-mode .badge-anual {
+  background-color: rgba(255, 169, 77, 0.15);
+  color: #FFA94D;
+}
+
+body.dark-mode .cupon-input-box {
+  background-color: #222;
+  border-color: #555;
+}
+
+body.dark-mode .cupon-input-box input {
+  color: #fff;
+}
+
+body.dark-mode .cupon-input-box button {
+  background-color: #444;
+  color: #fff;
+}
+
+body.dark-mode .pago-seguro-badge {
+  background-color: rgba(76, 175, 80, 0.04);
+  border-color: rgba(76, 175, 80, 0.1);
+  color: #81c784;
+}

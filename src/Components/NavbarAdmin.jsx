@@ -12,7 +12,7 @@ import {
   faUserCheck,
   faUserTie,
   faGlobe,
-  faServer,
+  faCloud,
   faUser,
   faUserGroup,
   faMoon,
@@ -111,7 +111,7 @@ export default function NavbarAdmin() {
             </li>
             <li>
               <NavLink to="/paquetes" className="nav-link-admin" aria-label="Planes de Hosting">
-                <FontAwesomeIcon icon={faServer} aria-hidden="true" />
+                <FontAwesomeIcon icon={faCloud} aria-hidden="true" />
                 {sidebarAbierta && <span>Hosting</span>}
               </NavLink>
             </li>

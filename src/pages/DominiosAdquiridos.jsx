@@ -1,5 +1,15 @@
 import { useEffect, useState } from 'react';
 import { useUser } from '../Context/UserContext';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { 
+  faGlobe, 
+  faLock, 
+  faArrowRightArrowLeft, 
+  faPaperPlane, 
+  faCircleExclamation, 
+  faCircleCheck 
+} from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
 import './DominiosAdquiridos.css';
 
 function DominiosAdquiridos() {
@@ -104,52 +114,84 @@ function DominiosAdquiridos() {
     <main className="mis-dominios">
       <div className="cabecera-dominios">
         <h1 className="titulo-dominios">
-          <i className="fa-solid fa-globe icono" aria-hidden="true"></i>
+          <FontAwesomeIcon icon={faGlobe} className="icono-titulo-dominios" aria-hidden="true" />
           Mis Dominios
           <span className="badge-items">{dominios.length}</span>
         </h1>
-        <p className="subtexto-dominios">Seleccione un dominio si desea transferirlo</p>
+        <p className="subtexto-dominios">Seleccione un dominio si desea transferirlo a otra cuenta</p>
       </div>
 
       <div className="linea-separadora" />
 
       {cargando ? (
-        <p>Cargando...</p>
+        <p>Cargando dominios...</p>
       ) : error ? (
         <p className="error">{error}</p>
       ) : dominios.length === 0 ? (
-        <p>No tienes dominios registrados.</p>
+        <div className="dominios-vacio-contenedor">
+          <FontAwesomeIcon icon={faGlobe} className="icono-vacio" aria-hidden="true" />
+          <h2>No tienes dominios registrados</h2>
+          <p>¡Busca tu nombre de dominio ideal o genéralo con Inteligencia Artificial!</p>
+          <Link to="/dominios" className="btn-ir-buscar">
+            Buscar dominios
+          </Link>
+        </div>
       ) : (
         <div className="lista-dominios">
-          {dominios.map((dom, index) => (
-            <div
-              key={index}
-              className="dominio-item"
-              role="button"
-              tabIndex={0}
-              aria-haspopup="dialog"
-              aria-label={`Transferir dominio ${dom.nombre}`}
-              onClick={() => {
-                setDominioSeleccionado(dom.nombre);
-                setCorreoDestino("");
-                setErrorTransferencia("");
-              }}
-              onKeyDown={(e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                  e.preventDefault();
+          {dominios.map((dom, index) => {
+            // Determinar tipo de badge según vigencia
+            let estadoClase = "activo";
+            let estadoTexto = "Activo";
+            if (dom.diasRestantes <= 0) {
+              estadoClase = "vencido";
+              estadoTexto = "Vencido";
+            } else if (dom.diasRestantes <= 30) {
+              estadoClase = "aviso";
+              estadoTexto = "Próximo a vencer";
+            }
+
+            return (
+              <div
+                key={index}
+                className="dominio-item"
+                role="button"
+                tabIndex={0}
+                aria-haspopup="dialog"
+                aria-label={`Transferir dominio ${dom.nombre}`}
+                onClick={() => {
                   setDominioSeleccionado(dom.nombre);
                   setCorreoDestino("");
                   setErrorTransferencia("");
-                }
-              }}
-              style={{ cursor: 'pointer' }}
-            >
-              <span className="nombre">{dom.nombre}</span>
-              <span className="vence">
-                {dom.diasRestantes > 0 ? `Vence en: ${dom.diasRestantes} día(s)` : "Dominio vencido"}
-              </span>
-            </div>
-          ))}
+                }}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    setDominioSeleccionado(dom.nombre);
+                    setCorreoDestino("");
+                    setErrorTransferencia("");
+                  }
+                }}
+                style={{ cursor: 'pointer' }}
+              >
+                <div className="bloque-izquierdo">
+                  <FontAwesomeIcon icon={faGlobe} className="icono-item-dominio" aria-hidden="true" />
+                  <div className="nombre-y-badge">
+                    <span className="nombre">{dom.nombre}</span>
+                    <span className={`badge-estado ${estadoClase}`}>{estadoTexto}</span>
+                  </div>
+                </div>
+
+                <div className="bloque-derecho">
+                  <span className="vence">
+                    {dom.diasRestantes > 0 ? `Vence en: ${dom.diasRestantes} día(s)` : "Dominio vencido"}
+                  </span>
+                  <span className="transfer-hint">
+                    Transferir <FontAwesomeIcon icon={faArrowRightArrowLeft} aria-hidden="true" />
+                  </span>
+                </div>
+              </div>
+            );
+          })}
         </div>
       )}
 
@@ -177,9 +219,13 @@ function DominiosAdquiridos() {
             }}
           >
             <h2 id="modal-titulo">Transferir dominio</h2>
-            <div className="dominio-transferencia">{dominioSeleccionado}</div>
+            <div className="dominio-transferencia">
+              <FontAwesomeIcon icon={faGlobe} className="icono-transfer" aria-hidden="true" />
+              <span>{dominioSeleccionado}</span>
+            </div>
+            
             <div className="grupo-input">
-              <label htmlFor="transfer-email">Transferir a:</label>
+              <label htmlFor="transfer-email">Correo de la cuenta destino:</label>
               <div className="input-con-icono">
                 <input
                   id="transfer-email"
@@ -202,18 +248,19 @@ function DominiosAdquiridos() {
               </div>
               {errorTransferencia && (
                 <div className="error-box">
-                  <i className="fa-solid fa-circle-exclamation" aria-hidden="true"></i>
+                  <FontAwesomeIcon icon={faCircleExclamation} aria-hidden="true" />
                   <span>{errorTransferencia}</span>
                 </div>
               )}
             </div>
+            
             <div className="grupo-botones">
               <button
                 type="button"
                 onClick={manejarTransferencia}
                 disabled={!!errorTransferencia || !correoDestino}
               >
-                <i className="fa-solid fa-paper-plane" aria-hidden="true"></i>
+                <FontAwesomeIcon icon={faPaperPlane} className="btn-icon" aria-hidden="true" />
                 Transferir
               </button>
               <button

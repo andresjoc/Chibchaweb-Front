@@ -8,10 +8,10 @@ import {
   faMoon, 
   faCircleHalfStroke, 
   faHouse, 
-  faServer, 
+  faCloud, 
   faUser, 
   faGlobe, 
-  faLifeRing, 
+  faHeadset, 
   faShoppingCart,
   faTicket 
 } from '@fortawesome/free-solid-svg-icons';
@@ -112,7 +112,7 @@ function Navbar() {
               {usuario?.tipocuenta !== "DISTRIBUIDOR" && (
                 <li>
                   <NavLink to="/planesHosting" className="nav-link" onClick={handleMenuClick}>
-                    <FontAwesomeIcon icon={faServer} className="nav-icon" aria-hidden="true" /> Hosting
+                    <FontAwesomeIcon icon={faCloud} className="nav-icon" aria-hidden="true" /> Hosting
                   </NavLink>
                 </li>
               )}
@@ -128,7 +128,7 @@ function Navbar() {
               </li>
               <li>
                 <NavLink to="/soporte" className="nav-link" onClick={handleMenuClick}>
-                  <FontAwesomeIcon icon={faLifeRing} className="nav-icon" aria-hidden="true" /> Soporte
+                  <FontAwesomeIcon icon={faHeadset} className="nav-icon" aria-hidden="true" /> Soporte
                 </NavLink>
               </li>
             </>
