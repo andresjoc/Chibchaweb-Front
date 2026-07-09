@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./FormularioRegistroDistribuidor.css";
 import logo from "../Components/resources/logo.png";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 export default function FormularioRegistroDistribuidor() {
   const [form, setForm] = useState({
@@ -137,71 +137,93 @@ export default function FormularioRegistroDistribuidor() {
             {/* Columna izquierda */}
             <div className="columna-formulario">
               <div className="separador-formulario">Datos de la empresa</div>
+              <label htmlFor="dist-razon-social" className="sr-only">Razón social</label>
               <input
                 type="text"
+                id="dist-razon-social"
                 placeholder="Razón social"
                 name="razonSocial"
                 required
                 value={form.razonSocial}
                 onChange={manejarCambio}
+                autoComplete="organization"
               />
+              <label htmlFor="dist-nit" className="sr-only">NIT de la empresa</label>
               <input
                 type="text"
+                id="dist-nit"
                 placeholder="NIT de la empresa"
                 name="nit"
                 required
                 value={form.nit}
                 onChange={manejarCambio}
                 maxLength={10}
+                autoComplete="off"
               />
 
               <div className="separador-formulario">Datos de contacto</div>
+              <label htmlFor="dist-correo" className="sr-only">Correo electrónico</label>
               <input
                 type="email"
+                id="dist-correo"
                 placeholder="Correo electrónico"
                 name="correo"
                 required
                 value={form.correo}
                 onChange={manejarCambio}
+                autoComplete="email"
               />
+              <label htmlFor="dist-telefono" className="sr-only">Teléfono</label>
               <input
                 type="tel"
+                id="dist-telefono"
                 placeholder="Teléfono"
                 name="telefono"
                 value={form.telefono}
                 onChange={manejarCambio}
+                autoComplete="tel"
               />
+              <label htmlFor="dist-direccion" className="sr-only">Dirección</label>
               <input
                 type="text"
+                id="dist-direccion"
                 placeholder="Dirección"
                 name="direccion"
                 value={form.direccion}
                 onChange={manejarCambio}
+                autoComplete="street-address"
               />
             </div>
 
             {/* Columna derecha */}
             <div className="columna-formulario">
               <div className="separador-formulario">Credenciales</div>
+              <label htmlFor="dist-password" className="sr-only">Contraseña</label>
               <input
                 type="password"
+                id="dist-password"
                 placeholder="Contraseña"
                 name="contrasenaCuenta"
                 required
                 value={form.contrasenaCuenta}
                 onChange={manejarCambio}
+                autoComplete="new-password"
               />
+              <label htmlFor="dist-repeat-password" className="sr-only">Repetir contraseña</label>
               <input
                 type="password"
+                id="dist-repeat-password"
                 placeholder="Repetir contraseña"
                 name="contrasenaRepetida"
                 required
                 value={form.contrasenaRepetida}
                 onChange={manejarCambio}
+                autoComplete="new-password"
               />
 
               <div className="separador-formulario">País</div>
-              <select name="idpais" value={form.idpais} onChange={manejarCambio}>
+              <label htmlFor="dist-pais" className="sr-only">País</label>
+              <select id="dist-pais" name="idpais" value={form.idpais} onChange={manejarCambio} autoComplete="country">
                 <option value="76">Brasil</option>
                 <option value="170">Colombia</option>
                 <option value="218">Ecuador</option>
@@ -218,7 +240,7 @@ export default function FormularioRegistroDistribuidor() {
           {mensaje && <p className="mensaje-estado">{mensaje}</p>}
 
           <p className="login-link">
-            ¿Ya tienes una cuenta? <a href="#">Inicia sesión</a>
+            ¿Ya tienes una cuenta? <Link to="/login">Inicia sesión</Link>
           </p>
         </div>
       </div>

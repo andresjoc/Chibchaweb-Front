@@ -162,20 +162,23 @@ export default function Tarjeta() {
           </div>
         </div>
 
-        <label>Número de tarjeta</label>
+        <label htmlFor="tarjeta-numero">Número de tarjeta</label>
         <input
           type="text"
+          id="tarjeta-numero"
           name="numero"
           placeholder="123456..."
           value={form.numero}
           onChange={manejarCambio}
+          autoComplete="cc-number"
           required
         />
 
         <div className="tarjeta-flex">
           <div>
-            <label>Fecha de vencimiento</label>
+            <label htmlFor="tarjeta-vencimiento">Fecha de vencimiento</label>
             <DatePicker
+              id="tarjeta-vencimiento"
               selected={form.vencimiento}
               onChange={(date) => setForm({ ...form, vencimiento: date })}
               dateFormat="MM/yyyy"
@@ -189,15 +192,17 @@ export default function Tarjeta() {
             />
           </div>
           <div>
-            <label>CVC / CVV</label>
+            <label htmlFor="tarjeta-cvc">CVC / CVV</label>
             <input
               type="text"
+              id="tarjeta-cvc"
               name="cvc"
               maxLength={4}
               inputMode="numeric"
               pattern="\d*"
               placeholder="123"
               value={form.cvc}
+              autoComplete="cc-csc"
               onChange={(e) => {
               const soloNumeros = e.target.value.replace(/\D/g, ""); // elimina todo lo que no sea dígito
               setForm({ ...form, cvc: soloNumeros });
@@ -206,9 +211,10 @@ export default function Tarjeta() {
           </div>
         </div>
 
-        <label className="guardar-check">
+        <label className="guardar-check" htmlFor="tarjeta-guardar">
           <input
             type="checkbox"
+            id="tarjeta-guardar"
             name="guardar"
             checked={form.guardar}
             onChange={manejarCambio}

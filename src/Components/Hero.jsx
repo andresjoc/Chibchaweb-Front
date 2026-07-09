@@ -36,8 +36,12 @@ function Hero() {
 
       {/* Input + botón */}
       <div className="hero-search">
+        <label htmlFor="hero-search-input" className="sr-only">
+          {tipoDominio === 'ia' ? "Describe tu idea de dominio" : "Buscar nombre de dominio específico"}
+        </label>
         <input
           type="text"
+          id="hero-search-input"
           placeholder={tipoDominio === 'ia' ? "Describe tu idea..." : "tusitio.com"}
           value={dominio}
           onChange={(e) => setDominio(e.target.value)}

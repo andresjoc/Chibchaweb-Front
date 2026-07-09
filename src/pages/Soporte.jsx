@@ -124,7 +124,7 @@ function Soporte() {
     <main className="soporte-container">
       <div className="soporte-formulario">
         <h2>
-          <FontAwesomeIcon icon={faHeadset} /> Centro de Soporte Técnico
+          <FontAwesomeIcon icon={faHeadset} aria-hidden="true" /> Centro de Soporte Técnico
         </h2>
         <form onSubmit={handleSubmit}>
           {error && <p className="form-error">{error}</p>}
@@ -156,7 +156,7 @@ function Soporte() {
       </div>
 
       <div className="soporte-tickets">
-        <h3>📋 Mis Tickets</h3>
+        <h3><span aria-hidden="true">📋</span> Mis Tickets</h3>
 
         <div className="lista-tickets">
           {cargandoTickets ? (
@@ -173,6 +173,15 @@ function Soporte() {
                   key={t.id_ticket}
                   className={`ticket ${abierto ? 'abierto' : ''}`}
                   onClick={() => abrirTicket(t)}
+                  role="button"
+                  tabIndex={0}
+                  aria-expanded={abierto}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault();
+                      abrirTicket(t);
+                    }
+                  }}
                 >
                   <span className="ticket-id">#{t.codigo}</span>
                   <span className="ticket-desc">{t.descripcion}</span>
@@ -189,7 +198,7 @@ function Soporte() {
                         respuestas.map((r) => (
                           <div key={r.id_respuesta} className="ticket-respuesta">
                             <p>{r.contenido}</p>
-                            <small><em>📅 {r.fecha}</em></small>
+                            <small><em><span aria-hidden="true">📅</span> {r.fecha}</em></small>
                           </div>
                         ))
                       ) : (

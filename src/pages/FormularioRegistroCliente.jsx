@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./FormularioRegistroCliente.css";
 import logo from "../Components/resources/logo.png";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 export default function FormularioRegistro() {
   const [form, setForm] = useState({
@@ -148,23 +148,35 @@ export default function FormularioRegistro() {
             {/* Columna izquierda */}
             <div className="columna-formulario">
               <div className="separador-formulario">Datos personales</div>
-              <input type="text" placeholder="Nombre completo" name="nombreCuenta" required value={form.nombreCuenta} onChange={manejarCambio} />
-              <input type="text" placeholder="Identificación" name="identificacion" required value={form.identificacion} onChange={manejarCambio} maxLength={10} />
-              <input type="text" placeholder="Dirección (opcional)" name="direccion" value={form.direccion} onChange={manejarCambio} />
+              <label htmlFor="reg-nombre" className="sr-only">Nombre completo</label>
+              <input type="text" id="reg-nombre" placeholder="Nombre completo" name="nombreCuenta" required value={form.nombreCuenta} onChange={manejarCambio} autoComplete="name" />
+              
+              <label htmlFor="reg-identificacion" className="sr-only">Identificación</label>
+              <input type="text" id="reg-identificacion" placeholder="Identificación" name="identificacion" required value={form.identificacion} onChange={manejarCambio} maxLength={10} autoComplete="username" />
+              
+              <label htmlFor="reg-direccion" className="sr-only">Dirección (opcional)</label>
+              <input type="text" id="reg-direccion" placeholder="Dirección (opcional)" name="direccion" value={form.direccion} onChange={manejarCambio} autoComplete="street-address" />
 
               <div className="separador-formulario">Datos de contacto</div>
-              <input type="email" placeholder="Correo electrónico" name="correo" required value={form.correo} onChange={manejarCambio} />
-              <input type="tel" placeholder="Teléfono (opcional)" name="telefono" value={form.telefono} onChange={manejarCambio} maxLength={10} />
+              <label htmlFor="reg-correo" className="sr-only">Correo electrónico</label>
+              <input type="email" id="reg-correo" placeholder="Correo electrónico" name="correo" required value={form.correo} onChange={manejarCambio} autoComplete="email" />
+              
+              <label htmlFor="reg-telefono" className="sr-only">Teléfono (opcional)</label>
+              <input type="tel" id="reg-telefono" placeholder="Teléfono (opcional)" name="telefono" value={form.telefono} onChange={manejarCambio} maxLength={10} autoComplete="tel" />
             </div>
 
             {/* Columna derecha */}
             <div className="columna-formulario">
               <div className="separador-formulario">Credenciales</div>
-              <input type="password" placeholder="Contraseña" name="contrasenaCuenta" required value={form.contrasenaCuenta} onChange={manejarCambio} />
-              <input type="password" placeholder="Repetir contraseña" name="repetirContrasena" required value={form.repetirContrasena} onChange={manejarCambio} />
+              <label htmlFor="reg-password" className="sr-only">Contraseña</label>
+              <input type="password" id="reg-password" placeholder="Contraseña" name="contrasenaCuenta" required value={form.contrasenaCuenta} onChange={manejarCambio} autoComplete="new-password" />
+              
+              <label htmlFor="reg-repeat-password" className="sr-only">Repetir contraseña</label>
+              <input type="password" id="reg-repeat-password" placeholder="Repetir contraseña" name="repetirContrasena" required value={form.repetirContrasena} onChange={manejarCambio} autoComplete="new-password" />
 
               <div className="separador-formulario">País</div>
-              <select name="idpais" value={form.idpais} onChange={manejarCambio}>
+              <label htmlFor="reg-pais" className="sr-only">País</label>
+              <select id="reg-pais" name="idpais" value={form.idpais} onChange={manejarCambio} autoComplete="country">
                 <option value="76">Brasil</option>
                 <option value="170">Colombia</option>
                 <option value="218">Ecuador</option>
@@ -181,7 +193,7 @@ export default function FormularioRegistro() {
           {mensaje && <p className="mensaje-estado">{mensaje}</p>}
 
           <p className="login-link">
-            ¿Ya tienes una cuenta? <a href="#">Inicia sesión</a>
+            ¿Ya tienes una cuenta? <Link to="/login">Inicia sesión</Link>
           </p>
         </div>
       </div>

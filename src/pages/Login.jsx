@@ -161,24 +161,30 @@ export default function Login() {
       </button>
 
       <div className="login-box">
-        <img src={logo} alt="ChibchaWeb" className="logo-login" />
+        <img src={logo} alt="Logotipo de ChibchaWeb" className="logo-login" />
         <h2 className="titulo-login">Iniciar sesión</h2>
 
         <form onSubmit={manejarSubmit}>
+          <label htmlFor="login-username" className="sr-only">Identificación o Usuario</label>
           <input
             type="text"
+            id="login-username"
             name="usuario"
             placeholder="Identificación"
             value={form.usuario}
             onChange={manejarCambio}
+            autoComplete="username"
             required
           />
+          <label htmlFor="login-password" className="sr-only">Contraseña</label>
           <input
             type="password"
+            id="login-password"
             name="password"
             placeholder="Contraseña"
             value={form.password}
             onChange={manejarCambio}
+            autoComplete="current-password"
             required
           />
           <button type="submit" disabled={cargando}>

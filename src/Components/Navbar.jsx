@@ -59,7 +59,7 @@ function Navbar() {
     <nav className="navbar">
       <NavLink to="/" className="navbar-logo">
         <div className="navbar-left">
-          <img src={logo} alt="Logo" className="logo-img" />
+          <img src={logo} alt="Logotipo de ChibchaWeb" className="logo-img" />
           <div className="brand-text">
             <strong>ChibchaWeb</strong>
             <span className="subtitle">Hosting Platform</span>
@@ -67,9 +67,14 @@ function Navbar() {
         </div>
       </NavLink>
 
-      <div className="hamburger" onClick={() => setMenuOpen(!menuOpen)}>
+      <button 
+        className="hamburger" 
+        onClick={() => setMenuOpen(!menuOpen)}
+        aria-label={menuOpen ? "Cerrar menú de navegación" : "Abrir menú de navegación"}
+        aria-expanded={menuOpen}
+      >
         ☰
-      </div>
+      </button>
 
       <div className={`navbar-right ${menuOpen ? 'open' : ''}`} ref={menuRef}>
         <ul className="navbar-menu">
@@ -105,8 +110,12 @@ function Navbar() {
           </button>
         )}
 
-        <button className="mode-toggle-button" onClick={toggleDarkMode}>
-          <FontAwesomeIcon icon={darkMode ? faCircleHalfStroke : faMoon} />
+        <button 
+          className="mode-toggle-button" 
+          onClick={toggleDarkMode}
+          aria-label={darkMode ? "Activar modo claro" : "Activar modo oscuro"}
+        >
+          <FontAwesomeIcon icon={darkMode ? faCircleHalfStroke : faMoon} aria-hidden="true" />
         </button>
       </div>
     </nav>

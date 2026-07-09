@@ -11,13 +11,13 @@ export default function Contacto() {
 
       <div className="info-grid">
         <div className="info-card">
-          <div className="icono">📨</div>
+          <span className="icono" aria-hidden="true">📨</span>
           <h3>Soporte por Ticket</h3>
           <p>Envía una solicitud desde la sección de soporte técnico y recibe una respuesta personalizada.</p>
         </div>
 
         <div className="info-card">
-          <div className="icono">📧</div>
+          <span className="icono" aria-hidden="true">📧</span>
           <h3>Correo de Soporte</h3>
           <p>chibchawebcom@gmail.com</p>
         </div>

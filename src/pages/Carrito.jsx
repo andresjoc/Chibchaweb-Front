@@ -220,11 +220,15 @@ const manejarPago = async () => {
           <div className="lista-dominios">
             {items.map((item, i) => (
               <div key={i} className="item-dominio">
-                <span className="check">✔</span>
+                <span className="check" aria-hidden="true">✔</span>
                 <span className="nombre">{item.nombre}</span>
                 <span className="precio">${item.precio.toLocaleString()} USD</span>
-                <button className="btn-eliminar" onClick={() => eliminarDominio(item.nombre)}>
-                  <FontAwesomeIcon icon={faTrash} />
+                <button 
+                  className="btn-eliminar" 
+                  onClick={() => eliminarDominio(item.nombre)}
+                  aria-label={`Eliminar dominio ${item.nombre} del carrito`}
+                >
+                  <FontAwesomeIcon icon={faTrash} aria-hidden="true" />
                 </button>
               </div>
             ))}

@@ -272,14 +272,18 @@ function Dominios() {
       {/* Buscador */}
     <div className="buscador-contenedor">
       <div className="buscador">
+        <label htmlFor="domain-search-input" className="sr-only">
+          {tipoBusqueda === 'normal' ? "Buscar dominio específico" : "Buscar dominio mediante inteligencia artificial"}
+        </label>
         <input
           type="text"
+          id="domain-search-input"
           placeholder={tipoBusqueda === 'ia' ? "Describe tu idea de negocio" : "chibchaweb"}
           value={input}
           onChange={e => setInput(e.target.value)}
         />
         <button className="boton-buscador-metaphora" onClick={() => manejarBusqueda(null, tipoBusqueda)} title="Buscar Dominio" aria-label="Buscar Dominio">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="30" height="30">
+          <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="30" height="30">
             <rect x="28" y="28" width="7" height="17" rx="3.5" transform="rotate(-45 32 37)" fill="#FFFFFF" />
             <path d="M 23 23 L 26 26" stroke="#FFFFFF" strokeWidth="3.5" strokeLinecap="round"/>
             <circle cx="18" cy="18" r="12" fill="none" stroke="#FFFFFF" strokeWidth="3.5" />
@@ -328,14 +332,14 @@ function Dominios() {
                   aria-label={dominiosAgregados.has(dominio) ? "Agregado" : "Agregar al carrito"}
                 >
                   {dominiosAgregados.has(dominio) ? (
-                    <><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                       <circle cx="9" cy="21" r="1" />
                       <circle cx="20" cy="21" r="1" />
                       <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
                       <polyline points="11 10 13 12 17 8" />
                     </svg> ✓</>
                   ) : (
-                    <><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#FFFFFF" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#FFFFFF" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                       <circle cx="9" cy="21" r="1" />
                       <circle cx="20" cy="21" r="1" />
                       <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
@@ -377,14 +381,14 @@ function Dominios() {
                       aria-label={dominiosAgregados.has(r.id) ? "Agregado" : "Agregar al carrito"}
                     >
                       {dominiosAgregados.has(r.id) ? (
-                        <><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                        <><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                           <circle cx="9" cy="21" r="1" />
                           <circle cx="20" cy="21" r="1" />
                           <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
                           <polyline points="11 10 13 12 17 8" />
                         </svg> ✓</>
                       ) : (
-                        <><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#FFFFFF" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                        <><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#FFFFFF" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                           <circle cx="9" cy="21" r="1" />
                           <circle cx="20" cy="21" r="1" />
                           <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />

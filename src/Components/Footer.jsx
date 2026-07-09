@@ -25,25 +25,25 @@ function Footer() {
               href="https://www.facebook.com/profile.php?id=61579028858597"
               target="_blank"
               rel="noopener noreferrer"
-              title="Facebook"
+              aria-label="Facebook de ChibchaWeb (se abre en una nueva pestaña)"
             >
-              <i className="fab fa-facebook-f"></i>
+              <i className="fab fa-facebook-f" aria-hidden="true"></i>
             </a>
             <a
               href="https://www.instagram.com/chibchaweb/"
               target="_blank"
               rel="noopener noreferrer"
-              title="Instagram"
+              aria-label="Instagram de ChibchaWeb (se abre en una nueva pestaña)"
             >
-              <i className="fab fa-instagram"></i>
+              <i className="fab fa-instagram" aria-hidden="true"></i>
             </a>
             <a
               href="https://x.com/ChibchaWeb"
               target="_blank"
               rel="noopener noreferrer"
-              title="X (Twitter)"
+              aria-label="X (anteriormente Twitter) de ChibchaWeb (se abre en una nueva pestaña)"
             >
-              <i className="fab fa-x-twitter"></i>
+              <i className="fab fa-x-twitter" aria-hidden="true"></i>
             </a>
           </div>
         </div>

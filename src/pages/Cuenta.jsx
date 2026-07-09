@@ -200,13 +200,25 @@ const guardarCambios = async () => {
       <div className="cuenta-info">
         {modoEdicion ? (
           <>
-            <div className="cuenta-dato"><strong>Nombre:</strong><input name="NOMBRECUENTA" value={formData.NOMBRECUENTA} onChange={handleInputChange} /></div>
-            <div className="cuenta-dato"><strong>Correo:</strong><input name="CORREO" value={formData.CORREO} onChange={handleInputChange} /></div>
-            <div className="cuenta-dato"><strong>Teléfono:</strong><input name="TELEFONO" value={formData.TELEFONO} onChange={handleInputChange} /></div>
-            <div className="cuenta-dato"><strong>Dirección:</strong><input name="DIRECCION" value={formData.DIRECCION} onChange={handleInputChange} /></div>
             <div className="cuenta-dato">
-              <strong>País:</strong>
-              <select name="IDPAIS" value={formData.IDPAIS} onChange={handleInputChange}>
+              <label htmlFor="perfil-nombre"><strong>Nombre:</strong></label>
+              <input id="perfil-nombre" name="NOMBRECUENTA" value={formData.NOMBRECUENTA} onChange={handleInputChange} autoComplete="name" />
+            </div>
+            <div className="cuenta-dato">
+              <label htmlFor="perfil-correo"><strong>Correo:</strong></label>
+              <input id="perfil-correo" name="CORREO" value={formData.CORREO} onChange={handleInputChange} autoComplete="email" />
+            </div>
+            <div className="cuenta-dato">
+              <label htmlFor="perfil-telefono"><strong>Teléfono:</strong></label>
+              <input id="perfil-telefono" name="TELEFONO" value={formData.TELEFONO} onChange={handleInputChange} autoComplete="tel" />
+            </div>
+            <div className="cuenta-dato">
+              <label htmlFor="perfil-direccion"><strong>Dirección:</strong></label>
+              <input id="perfil-direccion" name="DIRECCION" value={formData.DIRECCION} onChange={handleInputChange} autoComplete="street-address" />
+            </div>
+            <div className="cuenta-dato">
+              <label htmlFor="perfil-pais"><strong>País:</strong></label>
+              <select id="perfil-pais" name="IDPAIS" value={formData.IDPAIS} onChange={handleInputChange} autoComplete="country">
                 {Object.entries(paises).map(([codigo, nombre]) => (
                   <option key={codigo} value={codigo}>{nombre}</option>
                 ))}
@@ -252,11 +264,12 @@ const guardarCambios = async () => {
 
               <div className="distribuidor-table-wrapper">
                 <table className="distribuidor-table">
+                  <caption className="sr-only">Historial de dominios comprados y comisiones aplicadas</caption>
                   <thead>
                     <tr>
-                      <th>Dominio</th>
-                      <th>Precio original</th>
-                      <th>Ahorro por comisión</th>
+                      <th scope="col">Dominio</th>
+                      <th scope="col">Precio original</th>
+                      <th scope="col">Ahorro por comisión</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -310,8 +323,11 @@ const guardarCambios = async () => {
         <div className="chibcha-modal-overlay">
           <div className="chibcha-modal">
             <h3>Actualizar contraseña</h3>
-            <input type="password" placeholder="Contraseña actual" value={contrasenaActual} onChange={(e) => setContrasenaActual(e.target.value)} />
-            <input type="password" placeholder="Nueva contraseña" value={contrasenaNueva} onChange={(e) => setContrasenaNueva(e.target.value)} />
+            <label htmlFor="modal-contrasena-actual" className="sr-only">Contraseña actual</label>
+            <input id="modal-contrasena-actual" type="password" placeholder="Contraseña actual" value={contrasenaActual} onChange={(e) => setContrasenaActual(e.target.value)} autoComplete="current-password" />
+            
+            <label htmlFor="modal-contrasena-nueva" className="sr-only">Nueva contraseña</label>
+            <input id="modal-contrasena-nueva" type="password" placeholder="Nueva contraseña" value={contrasenaNueva} onChange={(e) => setContrasenaNueva(e.target.value)} autoComplete="new-password" />
             <div className="modal-buttons">
               <button onClick={cambiarContrasena} disabled={cambiandoContrasena}>{cambiandoContrasena ? "Actualizando..." : "Actualizar"}</button>
               <button onClick={() => setMostrarDialogo(false)}>Cancelar</button>

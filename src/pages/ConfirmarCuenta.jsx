@@ -95,8 +95,10 @@ const confirmarCuenta = async (token, idcuenta) => {
         <p>Ingresa el código que recibiste por correo para activar tu cuenta:</p>
 
         <form onSubmit={manejarSubmit}>
+          <label htmlFor="codigo-verificacion" className="sr-only">Código de verificación</label>
           <input
             type="text"
+            id="codigo-verificacion"
             placeholder="Código de verificación"
             value={codigo}
             onChange={(e) => setCodigo(e.target.value)}
