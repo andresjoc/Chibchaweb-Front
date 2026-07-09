@@ -54,6 +54,7 @@ import CuentaPostulado from "./pages/CuentaPostulado";
 
 // Ruta protegida
 import RutaProtegida from "./Components/RutaProtegida";
+import BotonSoporteFlotante from "./Components/BotonSoporteFlotante";
 
 import './styles.css';
 
@@ -140,6 +141,9 @@ function App() {
         esCoordinador ? <FooterCoordinador /> :
         <Footer />
       ) : <Footer />}
+
+      {/* Botón Flotante de Soporte Custom */}
+      <BotonSoporteFlotante />
     </div>
   );
 }
