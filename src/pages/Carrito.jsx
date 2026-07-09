@@ -214,7 +214,9 @@ const manejarPago = async () => {
 
   return (
     <main className="carrito">
-      <h1>Carrito <span className="cantidad-items">({items.length} items)</span></h1>
+      <h1>
+        <FontAwesomeIcon icon={faShoppingCart} className="titulo-icono-carrito" aria-hidden="true" /> Carrito <span className="cantidad-items">({items.length} items)</span>
+      </h1>
       <div className="linea-separadora" />
 
       {cargando ? (
@@ -271,15 +273,6 @@ const manejarPago = async () => {
               </div>
             )}
 
-            {/* Cupón mockup */}
-            <div className="cupon-mockup">
-              <label htmlFor="coupon-input" className="sr-only">Cupón de descuento</label>
-              <div className="cupon-input-box">
-                <FontAwesomeIcon icon={faTag} className="icono-cupon" aria-hidden="true" />
-                <input id="coupon-input" type="text" placeholder="Código de cupón" disabled />
-                <button type="button" disabled>Aplicar</button>
-              </div>
-            </div>
 
             <hr />
 

@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from "react";
 import { useUser } from "../Context/UserContext";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -207,6 +208,7 @@ const guardarCambios = async () => {
 
   return (
     <div className="cuenta-container">
+        <h1>Perfil de Cuenta</h1>
       {/* Sección de avatar y tipo de cuenta */}
       <div className="perfil-avatar-seccion">
         <div className="avatar-circulo" aria-hidden="true">

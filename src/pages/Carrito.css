@@ -408,3 +408,12 @@ body.dark-mode .pago-seguro-badge {
   border-color: rgba(76, 175, 80, 0.1);
   color: #81c784;
 }
+
+.titulo-icono-carrito {
+  margin-right: 12px;
+  color: #924600;
+}
+
+body.dark-mode .titulo-icono-carrito {
+  color: #FFA94D;
+}
