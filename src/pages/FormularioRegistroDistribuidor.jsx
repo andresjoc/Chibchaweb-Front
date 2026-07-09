@@ -136,100 +136,108 @@ export default function FormularioRegistroDistribuidor() {
           <form onSubmit={manejarSubmit} className="form-dos-columnas">
             {/* Columna izquierda */}
             <div className="columna-formulario">
-              <div className="separador-formulario">Datos de la empresa</div>
-              <label htmlFor="dist-razon-social" className="sr-only">Razón social</label>
-              <input
-                type="text"
-                id="dist-razon-social"
-                placeholder="Razón social"
-                name="razonSocial"
-                required
-                value={form.razonSocial}
-                onChange={manejarCambio}
-                autoComplete="organization"
-              />
-              <label htmlFor="dist-nit" className="sr-only">NIT de la empresa</label>
-              <input
-                type="text"
-                id="dist-nit"
-                placeholder="NIT de la empresa"
-                name="nit"
-                required
-                value={form.nit}
-                onChange={manejarCambio}
-                maxLength={10}
-                autoComplete="off"
-              />
+              <fieldset style={{ border: 'none', padding: 0, margin: '0 0 1.5rem 0' }}>
+                <legend className="separador-formulario">Datos de la empresa</legend>
+                <label htmlFor="dist-razon-social" className="sr-only">Razón social</label>
+                <input
+                  type="text"
+                  id="dist-razon-social"
+                  placeholder="Razón social"
+                  name="razonSocial"
+                  required
+                  value={form.razonSocial}
+                  onChange={manejarCambio}
+                  autoComplete="organization"
+                />
+                <label htmlFor="dist-nit" className="sr-only">NIT de la empresa</label>
+                <input
+                  type="text"
+                  id="dist-nit"
+                  placeholder="NIT de la empresa"
+                  name="nit"
+                  required
+                  value={form.nit}
+                  onChange={manejarCambio}
+                  maxLength={10}
+                  autoComplete="off"
+                />
+              </fieldset>
 
-              <div className="separador-formulario">Datos de contacto</div>
-              <label htmlFor="dist-correo" className="sr-only">Correo electrónico</label>
-              <input
-                type="email"
-                id="dist-correo"
-                placeholder="Correo electrónico"
-                name="correo"
-                required
-                value={form.correo}
-                onChange={manejarCambio}
-                autoComplete="email"
-              />
-              <label htmlFor="dist-telefono" className="sr-only">Teléfono</label>
-              <input
-                type="tel"
-                id="dist-telefono"
-                placeholder="Teléfono"
-                name="telefono"
-                value={form.telefono}
-                onChange={manejarCambio}
-                autoComplete="tel"
-              />
-              <label htmlFor="dist-direccion" className="sr-only">Dirección</label>
-              <input
-                type="text"
-                id="dist-direccion"
-                placeholder="Dirección"
-                name="direccion"
-                value={form.direccion}
-                onChange={manejarCambio}
-                autoComplete="street-address"
-              />
+              <fieldset style={{ border: 'none', padding: 0, margin: '0 0 1.5rem 0' }}>
+                <legend className="separador-formulario">Datos de contacto</legend>
+                <label htmlFor="dist-correo" className="sr-only">Correo electrónico</label>
+                <input
+                  type="email"
+                  id="dist-correo"
+                  placeholder="Correo electrónico"
+                  name="correo"
+                  required
+                  value={form.correo}
+                  onChange={manejarCambio}
+                  autoComplete="email"
+                />
+                <label htmlFor="dist-telefono" className="sr-only">Teléfono</label>
+                <input
+                  type="tel"
+                  id="dist-telefono"
+                  placeholder="Teléfono"
+                  name="telefono"
+                  value={form.telefono}
+                  onChange={manejarCambio}
+                  autoComplete="tel"
+                />
+                <label htmlFor="dist-direccion" className="sr-only">Dirección</label>
+                <input
+                  type="text"
+                  id="dist-direccion"
+                  placeholder="Dirección"
+                  name="direccion"
+                  value={form.direccion}
+                  onChange={manejarCambio}
+                  autoComplete="street-address"
+                />
+              </fieldset>
             </div>
 
             {/* Columna derecha */}
             <div className="columna-formulario">
-              <div className="separador-formulario">Credenciales</div>
-              <label htmlFor="dist-password" className="sr-only">Contraseña</label>
-              <input
-                type="password"
-                id="dist-password"
-                placeholder="Contraseña"
-                name="contrasenaCuenta"
-                required
-                value={form.contrasenaCuenta}
-                onChange={manejarCambio}
-                autoComplete="new-password"
-              />
-              <label htmlFor="dist-repeat-password" className="sr-only">Repetir contraseña</label>
-              <input
-                type="password"
-                id="dist-repeat-password"
-                placeholder="Repetir contraseña"
-                name="contrasenaRepetida"
-                required
-                value={form.contrasenaRepetida}
-                onChange={manejarCambio}
-                autoComplete="new-password"
-              />
+              <fieldset style={{ border: 'none', padding: 0, margin: '0 0 1.5rem 0' }}>
+                <legend className="separador-formulario">Credenciales</legend>
+                <label htmlFor="dist-password" className="sr-only">Contraseña</label>
+                <input
+                  type="password"
+                  id="dist-password"
+                  placeholder="Contraseña"
+                  name="contrasenaCuenta"
+                  required
+                  value={form.contrasenaCuenta}
+                  onChange={manejarCambio}
+                  autoComplete="new-password"
+                />
+                <label htmlFor="dist-repeat-password" className="sr-only">Repetir contraseña</label>
+                <input
+                  type="password"
+                  id="dist-repeat-password"
+                  placeholder="Repetir contraseña"
+                  name="contrasenaRepetida"
+                  required
+                  value={form.contrasenaRepetida}
+                  onChange={manejarCambio}
+                  autoComplete="new-password"
+                />
+              </fieldset>
 
-              <div className="separador-formulario">País</div>
-              <label htmlFor="dist-pais" className="sr-only">País</label>
-              <select id="dist-pais" name="idpais" value={form.idpais} onChange={manejarCambio} autoComplete="country">
-                <option value="76">Brasil</option>
-                <option value="170">Colombia</option>
-                <option value="218">Ecuador</option>
-                <option value="604">Perú</option>
-                <option value="862">Venezuela</option>
-              </select>
+              <fieldset style={{ border: 'none', padding: 0, margin: '0 0 1.5rem 0' }}>
+                <legend className="separador-formulario">País</legend>
+                <label htmlFor="dist-pais" className="sr-only">País</label>
+                <select id="dist-pais" name="idpais" value={form.idpais} onChange={manejarCambio} autoComplete="country">
+                  <option value="76">Brasil</option>
+                  <option value="170">Colombia</option>
+                  <option value="218">Ecuador</option>
+                  <option value="604">Perú</option>
+                  <option value="862">Venezuela</option>
+                </select>
+              </fieldset>
 
               <button type="submit" disabled={cargando}>
                 {cargando ? "Registrando..." : "Registrarse"}

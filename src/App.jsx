@@ -74,6 +74,9 @@ function App() {
 
   return (
     <div className={`app-layout ${esAdmin ? 'admin-layout' : ''}`}>
+      <a href="#main-content" className="skip-link">
+        Saltar al contenido principal
+      </a>
       {/* Navbar dinámica */}
       {usuario ? (
         esAdmin ? <AdminNavbar /> :
@@ -81,7 +84,7 @@ function App() {
         <Navbar />
       ) : <Navbar />}
 
-      <main className="main-content">
+      <main id="main-content" className="main-content">
         <Routes>
           {/* Rutas públicas */}
           <Route path="/" element={<Home />} />

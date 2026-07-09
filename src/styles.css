@@ -351,4 +351,26 @@ body.dark-mode .chibcha-modal button:hover {
   clip: rect(0, 0, 0, 0) !important;
   white-space: nowrap !important;
   border: 0 !important;
+}
+
+/* Skip link styling */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 15px;
+  background-color: var(--cafe, #924600);
+  color: #ffffff !important;
+  padding: 10px 20px;
+  border-radius: 4px;
+  z-index: 99999;
+  font-weight: bold;
+  text-decoration: none;
+  border: 2px solid #ffffff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+  top: 15px;
+  outline: 2px solid #ffaa4d;
 }

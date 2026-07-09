@@ -82,12 +82,23 @@ export default function MetodosPago() {
             <div
               key={index}
               className={`tarjeta ${seleccionado === index ? "seleccionada" : ""}`}
+              role="button"
+              tabIndex={0}
+              aria-pressed={seleccionado === index}
+              aria-label={`Tarjeta ${detectarTipoTarjeta(m.numerotarjeta)} terminada en ${String(m.numerotarjeta).slice(-4)}`}
               onClick={() => setSeleccionado(index)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  setSeleccionado(index);
+                }
+              }}
             >
               <div className="marca">
                 <img
                   src={obtenerLogoTarjeta(m.numerotarjeta)}
-                  alt={detectarTipoTarjeta(m.numerotarjeta)}
+                  alt=""
+                  aria-hidden="true"
                   className="logo-tarjeta"
                 />
               </div>

@@ -49,26 +49,28 @@ function Footer() {
         </div>
 
         {/* Navegación */}
-        <ul className="footer-links">
-          <li>
-            <NavLink to="/" className="nav-link">Inicio</NavLink>
-          </li>
-          <li>
-            <NavLink to="/planesHosting" className="nav-link">Hosting</NavLink>
-          </li>
-          {usuario ? (
+        <nav aria-label="Navegación del pie de página">
+          <ul className="footer-links">
             <li>
-              <NavLink to="/soporte" className="nav-link">Soporte</NavLink>
+              <NavLink to="/" className="nav-link">Inicio</NavLink>
             </li>
-          ) : (
             <li>
-              <NavLink to="/login" className="nav-link">Iniciar sesión</NavLink>
+              <NavLink to="/planesHosting" className="nav-link">Hosting</NavLink>
             </li>
-          )}
-          <li>
-            <NavLink to="/contacto" className="nav-link">Contacto</NavLink>
-          </li>
-        </ul>
+            {usuario ? (
+              <li>
+                <NavLink to="/soporte" className="nav-link">Soporte</NavLink>
+              </li>
+            ) : (
+              <li>
+                <NavLink to="/login" className="nav-link">Iniciar sesión</NavLink>
+              </li>
+            )}
+            <li>
+              <NavLink to="/contacto" className="nav-link">Contacto</NavLink>
+            </li>
+          </ul>
+        </nav>
       </div>
 
       {/* Copyright */}

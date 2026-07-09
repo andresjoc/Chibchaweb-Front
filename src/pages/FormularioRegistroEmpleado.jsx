@@ -123,42 +123,50 @@ export default function FormularioRegistroEmpleado() {
           <form onSubmit={manejarSubmit} className="form-dos-columnas">
             {/* Columna izquierda */}
             <div className="columna-formulario">
-              <div className="separador-formulario">Datos personales</div>
-              <label htmlFor="emp-nombre" className="sr-only">Nombre completo</label>
-              <input type="text" id="emp-nombre" placeholder="Nombre completo" name="nombreCuenta" required value={form.nombreCuenta} onChange={manejarCambio} autoComplete="name" />
-              
-              <label htmlFor="emp-identificacion" className="sr-only">Identificación</label>
-              <input type="text" id="emp-identificacion" placeholder="Identificación" name="identificacion" required maxLength={10} value={form.identificacion} onChange={manejarCambio} autoComplete="username" />
-              
-              <label htmlFor="emp-direccion" className="sr-only">Dirección (opcional)</label>
-              <input type="text" id="emp-direccion" placeholder="Dirección (opcional)" name="direccion" value={form.direccion} onChange={manejarCambio} autoComplete="street-address" />
+              <fieldset style={{ border: 'none', padding: 0, margin: '0 0 1.5rem 0' }}>
+                <legend className="separador-formulario">Datos personales</legend>
+                <label htmlFor="emp-nombre" className="sr-only">Nombre completo</label>
+                <input type="text" id="emp-nombre" placeholder="Nombre completo" name="nombreCuenta" required value={form.nombreCuenta} onChange={manejarCambio} autoComplete="name" />
+                
+                <label htmlFor="emp-identificacion" className="sr-only">Identificación</label>
+                <input type="text" id="emp-identificacion" placeholder="Identificación" name="identificacion" required maxLength={10} value={form.identificacion} onChange={manejarCambio} autoComplete="username" />
+                
+                <label htmlFor="emp-direccion" className="sr-only">Dirección (opcional)</label>
+                <input type="text" id="emp-direccion" placeholder="Dirección (opcional)" name="direccion" value={form.direccion} onChange={manejarCambio} autoComplete="street-address" />
+              </fieldset>
 
-              <div className="separador-formulario">Datos de contacto</div>
-              <label htmlFor="emp-correo" className="sr-only">Correo electrónico</label>
-              <input type="email" id="emp-correo" placeholder="Correo electrónico" name="correo" required value={form.correo} onChange={manejarCambio} autoComplete="email" />
-              
-              <label htmlFor="emp-telefono" className="sr-only">Teléfono (opcional)</label>
-              <input type="tel" id="emp-telefono" placeholder="Teléfono (opcional)" name="telefono" value={form.telefono} onChange={manejarCambio} autoComplete="tel" />
+              <fieldset style={{ border: 'none', padding: 0, margin: '0 0 1.5rem 0' }}>
+                <legend className="separador-formulario">Datos de contacto</legend>
+                <label htmlFor="emp-correo" className="sr-only">Correo electrónico</label>
+                <input type="email" id="emp-correo" placeholder="Correo electrónico" name="correo" required value={form.correo} onChange={manejarCambio} autoComplete="email" />
+                
+                <label htmlFor="emp-telefono" className="sr-only">Teléfono (opcional)</label>
+                <input type="tel" id="emp-telefono" placeholder="Teléfono (opcional)" name="telefono" value={form.telefono} onChange={manejarCambio} autoComplete="tel" />
+              </fieldset>
             </div>
 
             {/* Columna derecha */}
             <div className="columna-formulario">
-              <div className="separador-formulario">Credenciales</div>
-              <label htmlFor="emp-password" className="sr-only">Contraseña</label>
-              <input type="password" id="emp-password" placeholder="Contraseña" name="contrasenaCuenta" required value={form.contrasenaCuenta} onChange={manejarCambio} autoComplete="new-password" />
-              
-              <label htmlFor="emp-repeat-password" className="sr-only">Repetir contraseña</label>
-              <input type="password" id="emp-repeat-password" placeholder="Repetir contraseña" name="repetirContrasena" required value={form.repetirContrasena} onChange={manejarCambio} autoComplete="new-password" />
+              <fieldset style={{ border: 'none', padding: 0, margin: '0 0 1.5rem 0' }}>
+                <legend className="separador-formulario">Credenciales</legend>
+                <label htmlFor="emp-password" className="sr-only">Contraseña</label>
+                <input type="password" id="emp-password" placeholder="Contraseña" name="contrasenaCuenta" required value={form.contrasenaCuenta} onChange={manejarCambio} autoComplete="new-password" />
+                
+                <label htmlFor="emp-repeat-password" className="sr-only">Repetir contraseña</label>
+                <input type="password" id="emp-repeat-password" placeholder="Repetir contraseña" name="repetirContrasena" required value={form.repetirContrasena} onChange={manejarCambio} autoComplete="new-password" />
+              </fieldset>
 
-              <div className="separador-formulario">País</div>
-              <label htmlFor="emp-pais" className="sr-only">País</label>
-              <select id="emp-pais" name="idpais" value={form.idpais} onChange={manejarCambio} autoComplete="country">
-                <option value="76">Brasil</option>
-                <option value="170">Colombia</option>
-                <option value="218">Ecuador</option>
-                <option value="604">Perú</option>
-                <option value="862">Venezuela</option>
-              </select>
+              <fieldset style={{ border: 'none', padding: 0, margin: '0 0 1.5rem 0' }}>
+                <legend className="separador-formulario">País</legend>
+                <label htmlFor="emp-pais" className="sr-only">País</label>
+                <select id="emp-pais" name="idpais" value={form.idpais} onChange={manejarCambio} autoComplete="country">
+                  <option value="76">Brasil</option>
+                  <option value="170">Colombia</option>
+                  <option value="218">Ecuador</option>
+                  <option value="604">Perú</option>
+                  <option value="862">Venezuela</option>
+                </select>
+              </fieldset>
 
               <button type="submit" disabled={cargando}>
                 {cargando ? "Registrando..." : "Registrarse"}

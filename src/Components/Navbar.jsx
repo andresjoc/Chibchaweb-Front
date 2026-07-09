@@ -56,7 +56,7 @@ function Navbar() {
   ].includes(usuario?.tipocuenta);
 
   return (
-    <nav className="navbar">
+    <nav className="navbar" aria-label="Navegación principal">
       <NavLink to="/" className="navbar-logo">
         <div className="navbar-left">
           <img src={logo} alt="Logotipo de ChibchaWeb" className="logo-img" />
@@ -72,6 +72,7 @@ function Navbar() {
         onClick={() => setMenuOpen(!menuOpen)}
         aria-label={menuOpen ? "Cerrar menú de navegación" : "Abrir menú de navegación"}
         aria-expanded={menuOpen}
+        type="button"
       >
         ☰
       </button>
@@ -105,7 +106,7 @@ function Navbar() {
         </ul>
 
         {!esTecnico && (
-          <button className="cart-button" onClick={irAlCarrito}>
+          <button className="cart-button" onClick={irAlCarrito} type="button" aria-label="Ver el carrito de compras">
             Carrito
           </button>
         )}
@@ -114,6 +115,7 @@ function Navbar() {
           className="mode-toggle-button" 
           onClick={toggleDarkMode}
           aria-label={darkMode ? "Activar modo claro" : "Activar modo oscuro"}
+          type="button"
         >
           <FontAwesomeIcon icon={darkMode ? faCircleHalfStroke : faMoon} aria-hidden="true" />
         </button>

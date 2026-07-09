@@ -104,7 +104,7 @@ function DominiosAdquiridos() {
     <main className="mis-dominios">
       <div className="cabecera-dominios">
         <h1 className="titulo-dominios">
-          <i className="fa-solid fa-globe icono"></i>
+          <i className="fa-solid fa-globe icono" aria-hidden="true"></i>
           Mis Dominios
           <span className="badge-items">{dominios.length}</span>
         </h1>
@@ -125,10 +125,22 @@ function DominiosAdquiridos() {
             <div
               key={index}
               className="dominio-item"
+              role="button"
+              tabIndex={0}
+              aria-haspopup="dialog"
+              aria-label={`Transferir dominio ${dom.nombre}`}
               onClick={() => {
                 setDominioSeleccionado(dom.nombre);
                 setCorreoDestino("");
                 setErrorTransferencia("");
+              }}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  setDominioSeleccionado(dom.nombre);
+                  setCorreoDestino("");
+                  setErrorTransferencia("");
+                }
               }}
               style={{ cursor: 'pointer' }}
             >
@@ -142,14 +154,35 @@ function DominiosAdquiridos() {
       )}
 
       {dominioSeleccionado && (
-        <div className="modal-overlay">
-          <div className="modal-contenido">
-            <h2>Transferir dominio</h2>
+        <div 
+          className="modal-overlay"
+          onClick={() => {
+            setDominioSeleccionado(null);
+            setCorreoDestino("");
+            setErrorTransferencia("");
+          }}
+        >
+          <div 
+            className="modal-contenido"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="modal-titulo"
+            onClick={(e) => e.stopPropagation()}
+            onKeyDown={(e) => {
+              if (e.key === 'Escape') {
+                setDominioSeleccionado(null);
+                setCorreoDestino("");
+                setErrorTransferencia("");
+              }
+            }}
+          >
+            <h2 id="modal-titulo">Transferir dominio</h2>
             <div className="dominio-transferencia">{dominioSeleccionado}</div>
             <div className="grupo-input">
-              <label>Transferir a:</label>
+              <label htmlFor="transfer-email">Transferir a:</label>
               <div className="input-con-icono">
                 <input
+                  id="transfer-email"
                   type="email"
                   placeholder="correo@ejemplo.com"
                   value={correoDestino}
@@ -169,20 +202,22 @@ function DominiosAdquiridos() {
               </div>
               {errorTransferencia && (
                 <div className="error-box">
-                  <i className="fa-solid fa-circle-exclamation"></i>
+                  <i className="fa-solid fa-circle-exclamation" aria-hidden="true"></i>
                   <span>{errorTransferencia}</span>
                 </div>
               )}
             </div>
             <div className="grupo-botones">
               <button
+                type="button"
                 onClick={manejarTransferencia}
                 disabled={!!errorTransferencia || !correoDestino}
               >
-                <i className="fa-solid fa-paper-plane"></i>
+                <i className="fa-solid fa-paper-plane" aria-hidden="true"></i>
                 Transferir
               </button>
               <button
+                type="button"
                 className="cancelar"
                 onClick={() => {
                   setDominioSeleccionado(null);
