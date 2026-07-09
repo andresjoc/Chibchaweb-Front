@@ -383,4 +383,16 @@ body.dark-mode .chibcha-modal button:hover {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+}
+
+/* Global focus indicator style for all interactive elements (WCAG 2.4.7) */
+a:focus,
+button:focus,
+input:focus,
+select:focus,
+textarea:focus,
+[role="button"]:focus,
+[tabindex="0"]:focus {
+  outline: 3px solid #ff9d2b !important;
+  outline-offset: 2px !important;
 }
