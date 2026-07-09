@@ -232,40 +232,22 @@ function Dominios() {
   return (
     <main className={`dominios ${tipoBusqueda === 'ia' ? 'modo-ia' : ''}`}>
       {/* Filtro de búsqueda */}
-      <div className="hero-toggle">
+      <div className="hero-toggle" role="group" aria-label="Seleccionar tipo de búsqueda de dominio">
         <button
           className={tipoBusqueda === 'normal' ? 'activo' : ''}
           onClick={() => setTipoBusqueda('normal')}
+          type="button"
         >
           Dominio normal
         </button>
         <button
           onClick={() => setTipoBusqueda('ia')}
-          title="Dominio con IA"
-          aria-label="Dominio con IA"
+          title="IA"
+          aria-label="IA"
           className={`boton-selector-ia-metaphora ${tipoBusqueda === 'ia' ? 'activo' : ''}`}
+          type="button"
         >
-          <>Dominio con <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="22" height="22" style={{verticalAlign: 'middle'}}>
-            <path d="M 30 20 A 20 20 0 0 1 70 20 Z" fill="#ecc94b" />
-            <path d="M 32 20 A 18 18 0 0 1 68 20 Z" fill="#dd6b20" />
-            <rect x="25" y="16" width="50" height="8" rx="4" fill="#2b6cb0" />
-            <rect x="8" y="32" width="12" height="30" rx="6" fill="#ed8936" />
-            <circle cx="10" cy="47" r="8" fill="#dd6b20" />
-            <rect x="80" y="32" width="12" height="30" rx="6" fill="#ed8936" />
-            <circle cx="90" cy="47" r="8" fill="#dd6b20" />
-            <rect x="18" y="24" width="64" height="60" rx="10" fill="#4299e1" />
-            <circle cx="37" cy="45" r="13" fill="#ffffff" />
-            <circle cx="37" cy="45" r="8.5" fill="#e53e3e" />
-            <circle cx="63" cy="45" r="13" fill="#ffffff" />
-            <circle cx="63" cy="45" r="8.5" fill="#e53e3e" />
-            <rect x="25" y="65" width="50" height="13" rx="6.5" fill="#e2e8f0" stroke="#cbd5e0" strokeWidth="2" />
-            <line x1="35" y1="65" x2="35" y2="78" stroke="#cbd5e0" strokeWidth="2" />
-            <line x1="45" y1="65" x2="45" y2="78" stroke="#cbd5e0" strokeWidth="2" />
-            <line x1="55" y1="65" x2="55" y2="78" stroke="#cbd5e0" strokeWidth="2" />
-            <line x1="65" y1="65" x2="65" y2="78" stroke="#cbd5e0" strokeWidth="2" />
-            <path d="M 12 85 L 88 85 A 6 6 0 0 1 88 97 L 12 97 A 6 6 0 0 1 12 85 Z" fill="#3182ce" />
-            <polygon points="50,85 42,93 58,93" fill="#2b6cb0" />
-          </svg></>
+          IA
         </button>
       </div>
 

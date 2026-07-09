@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUniversalAccess } from '@fortawesome/free-solid-svg-icons';
 import './AccessibilityWidget.css';
 
 export default function AccessibilityWidget() {
@@ -94,7 +96,7 @@ export default function AccessibilityWidget() {
         aria-expanded={panelAbierto}
         type="button"
       >
-        ♿
+        <FontAwesomeIcon icon={faUniversalAccess} aria-hidden="true" />
       </button>
 
       {panelAbierto && (

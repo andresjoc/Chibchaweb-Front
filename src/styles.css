@@ -423,6 +423,7 @@ body.alto-contraste * {
   background-color: #000000 !important;
   color: #ffff00 !important;
   border-color: #ffff00 !important;
+  background-image: none !important;
   box-shadow: none !important;
   text-shadow: none !important;
 }
@@ -442,6 +443,10 @@ body.alto-contraste button:hover,
 body.alto-contraste button:focus {
   background-color: #ffff00 !important;
   color: #000000 !important;
+}
+body.alto-contraste .spinner {
+  border-color: #ffff00 !important;
+  border-top-color: transparent !important;
 }
 
 /* ===== ACCESIBILIDAD: Monocromo (Escala de Grises) ===== */
