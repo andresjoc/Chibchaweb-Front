@@ -209,35 +209,36 @@ export default function AsignarTickets() {
           <div key={ticket.id_ticket} className="ticket-card">
             <div className="ticket-header">
               <h3>
-                <FontAwesomeIcon icon={faTag} /> {ticket.asunto || "Sin asunto"}
+                <FontAwesomeIcon icon={faTag} aria-hidden="true" /> {ticket.asunto || "Sin asunto"}
               </h3>
             </div>
 
             <div className="ticket-info">
               <p>
-                <strong><FontAwesomeIcon icon={faEnvelope} /> Descripción:</strong>{" "}
+                <strong><FontAwesomeIcon icon={faEnvelope} aria-hidden="true" /> Descripción:</strong>{" "}
                 {ticket.descripcion}
               </p>
               <p>
-                <strong><FontAwesomeIcon icon={faLayerGroup} /> Nivel:</strong>{" "}
+                <strong><FontAwesomeIcon icon={faLayerGroup} aria-hidden="true" /> Nivel:</strong>{" "}
                 {ticket.nivel}
               </p>
               <p>
-                <strong><FontAwesomeIcon icon={faUser} /> Cliente:</strong>{" "}
+                <strong><FontAwesomeIcon icon={faUser} aria-hidden="true" /> Cliente:</strong>{" "}
                 {ticket.cliente?.nombre}
               </p>
             </div>
 
             <div className="ticket-actions">
-              <button onClick={() => abrirAsignacion(ticket)}>
-                <FontAwesomeIcon icon={faCircleCheck} /> Asignar
+              <button onClick={() => abrirAsignacion(ticket)} type="button">
+                <FontAwesomeIcon icon={faCircleCheck} aria-hidden="true" /> Asignar
               </button>
               {(ticket.nivel === 1 || ticket.nivel === 2) && (
                 <button
                   className="escalar-btn"
                   onClick={() => escalarTicket(ticket.id_ticket, ticket.nivel)}
+                  type="button"
                 >
-                  <FontAwesomeIcon icon={faArrowUp} /> Escalar
+                  <FontAwesomeIcon icon={faArrowUp} aria-hidden="true" /> Escalar
                 </button>
               )}
             </div>
@@ -246,10 +247,24 @@ export default function AsignarTickets() {
       </div>
 
       {ticketSeleccionado && (
-        <div className="modal">
-          <div className="modal-content">
-            <span className="cerrar" onClick={cerrarModal}>&times;</span>
-            <h3><FontAwesomeIcon icon={faCircleCheck} /> Asignar Ticket:</h3>
+        <div 
+          className="modal"
+          onClick={cerrarModal}
+        >
+          <div 
+            className="modal-content"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="modal-titulo"
+            onClick={(e) => e.stopPropagation()}
+            onKeyDown={(e) => {
+              if (e.key === 'Escape') {
+                cerrarModal();
+              }
+            }}
+          >
+            <button className="cerrar" onClick={cerrarModal} type="button" aria-label="Cerrar diálogo">&times;</button>
+            <h3 id="modal-titulo"><FontAwesomeIcon icon={faCircleCheck} aria-hidden="true" /> Asignar Ticket:</h3>
             <p><strong>Descripción:</strong> {ticketSeleccionado.descripcion}</p>
             <p><strong>Nivel:</strong> {ticketSeleccionado.nivel}</p>
 
@@ -276,6 +291,7 @@ export default function AsignarTickets() {
                 <button
                   disabled={!empleadoIDCuenta || asignando}
                   onClick={asignarTicket}
+                  type="button"
                 >
                   {asignando ? "Asignando..." : "Confirmar asignación"}
                 </button>
