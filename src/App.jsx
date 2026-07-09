@@ -57,6 +57,7 @@ import RutaProtegida from "./Components/RutaProtegida";
 import BotonSoporteFlotante from "./Components/BotonSoporteFlotante";
 
 import './styles.css';
+import AccessibilityWidget from "./Components/AccessibilityWidget";
 
 function App() {
   const { usuario, cargandoUsuario } = useUser();
@@ -144,6 +145,9 @@ function App() {
 
       {/* Botón Flotante de Soporte Custom */}
       <BotonSoporteFlotante />
+
+      {/* Widget de accesibilidad global */}
+      <AccessibilityWidget />
     </div>
   );
 }
