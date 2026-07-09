@@ -56,6 +56,7 @@ import CuentaPostulado from "./pages/CuentaPostulado";
 import RutaProtegida from "./Components/RutaProtegida";
 
 import './styles.css';
+import AccessibilityWidget from "./Components/AccessibilityWidget";
 
 function App() {
   const { usuario, cargandoUsuario } = useUser();
@@ -140,6 +141,9 @@ function App() {
         esCoordinador ? <FooterCoordinador /> :
         <Footer />
       ) : <Footer />}
+
+      {/* Widget de accesibilidad global */}
+      <AccessibilityWidget />
     </div>
   );
 }

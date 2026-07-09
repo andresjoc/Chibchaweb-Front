@@ -6,8 +6,10 @@ import { useUser } from '../Context/UserContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMoon, faCircleHalfStroke } from '@fortawesome/free-solid-svg-icons';
 import { useAlerta } from "../Context/AlertaContext";
+import { useLanguage } from '../Context/LanguageContext';
 
 function Navbar() {
+  const { t } = useLanguage();
   const { mostrarAlerta } = useAlerta();
   const [menuOpen, setMenuOpen] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
@@ -83,7 +85,7 @@ function Navbar() {
             <>
               <li>
                 <NavLink to="/perfil" className="nav-link" onClick={handleMenuClick}>
-                  Mi perfil
+                  {t('miPerfil')}
                 </NavLink>
               </li>
               <li>
@@ -94,20 +96,20 @@ function Navbar() {
             </>
           ) : (
             <>
-              <li><NavLink to="/" className="nav-link" onClick={handleMenuClick}>Inicio</NavLink></li>
+              <li><NavLink to="/" className="nav-link" onClick={handleMenuClick}>{t('inicio')}</NavLink></li>
               {usuario?.tipocuenta !== "DISTRIBUIDOR" && (
-                <li><NavLink to="/planesHosting" className="nav-link" onClick={handleMenuClick}>Hosting</NavLink></li>
+                <li><NavLink to="/planesHosting" className="nav-link" onClick={handleMenuClick}>{t('hosting')}</NavLink></li>
               )}
-              <li><NavLink to="/perfil" className="nav-link" onClick={handleMenuClick}>Mi perfil</NavLink></li>
-              <li><NavLink to="/DominiosAdquiridos" className="nav-link" onClick={handleMenuClick}>Mis dominios</NavLink></li>
-              <li><NavLink to="/soporte" className="nav-link" onClick={handleMenuClick}>Soporte</NavLink></li>
+              <li><NavLink to="/perfil" className="nav-link" onClick={handleMenuClick}>{t('miPerfil')}</NavLink></li>
+              <li><NavLink to="/DominiosAdquiridos" className="nav-link" onClick={handleMenuClick}>{t('misDominios')}</NavLink></li>
+              <li><NavLink to="/soporte" className="nav-link" onClick={handleMenuClick}>{t('soporte')}</NavLink></li>
             </>
           )}
         </ul>
 
         {!esTecnico && (
-          <button className="cart-button" onClick={irAlCarrito} type="button" aria-label="Ver el carrito de compras">
-            Carrito
+          <button className="cart-button" onClick={irAlCarrito} type="button" aria-label={t('verCarritoLabel')}>
+            {t('carrito')}
           </button>
         )}
 
