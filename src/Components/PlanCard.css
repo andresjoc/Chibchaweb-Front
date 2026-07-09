@@ -119,3 +119,8 @@ body.dark-mode .plan-button {
 body.dark-mode .plan-button:hover {
   background-color: #e38b31;
 }
+
+body.dark-mode .plan-fa-icon {
+  color: #FFA94D;
+}
+
