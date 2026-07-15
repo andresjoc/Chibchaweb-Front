@@ -18,6 +18,9 @@
   justify-content: center;
   gap: 30px;
   flex-wrap: wrap;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 .plan-icon img {

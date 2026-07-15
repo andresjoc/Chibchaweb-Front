@@ -24,12 +24,13 @@ export default function VerTicketsCoordinador() {
     <div className="coordinador-container">
       <h2>Tickets Asignados</h2>
       <table className="tabla-tickets">
+        <caption className="sr-only">Listado de tickets asignados a técnicos con sus respectivos estados e información de clientes</caption>
         <thead>
           <tr>
-            <th>ID</th>
-            <th>Cliente</th>
-            <th>Asunto</th>
-            <th>Estado</th>
+            <th scope="col">ID</th>
+            <th scope="col">Cliente</th>
+            <th scope="col">Asunto</th>
+            <th scope="col">Estado</th>
           </tr>
         </thead>
         <tbody>

@@ -7,7 +7,7 @@ function PlanCard({ title, description, faIcon }) {
       <div className="plan-icon">
         <FontAwesomeIcon icon={faIcon} className="plan-fa-icon" aria-hidden="true" />
       </div>
-      <h2 className="plan-title">{title}</h2>
+      <h3 className="plan-title">{title}</h3>
       <p className="plan-description">{description}</p>
     </div>
   );

@@ -85,6 +85,9 @@ function Navbar() {
         type="button"
       >
         ☰
+        <span className="sr-only">
+          {menuOpen ? "Cerrar menú de navegación" : "Abrir menú de navegación"}
+        </span>
       </button>
 
       <div className={`navbar-right ${menuOpen ? 'open' : ''}`} ref={menuRef}>
@@ -148,6 +151,9 @@ function Navbar() {
           type="button"
         >
           <FontAwesomeIcon icon={darkMode ? faCircleHalfStroke : faMoon} aria-hidden="true" />
+          <span className="sr-only">
+            {darkMode ? "Activar modo claro" : "Activar modo oscuro"}
+          </span>
         </button>
       </div>
     </nav>

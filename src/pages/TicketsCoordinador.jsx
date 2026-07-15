@@ -58,14 +58,15 @@ export default function TicketsCoordinador() {
       <div className="bloque-tabla">
         <h3 className={`titulo-${color}`}>{titulo}</h3>
         <table className="tabla-tickets">
+          <caption className="sr-only">Listado de tickets de soporte: {titulo}</caption>
           <thead>
             <tr>
-              <th>ID</th>
-              <th>Descripción</th>
-              <th>Nivel</th>
-              <th>Cliente</th>
-              <th>Fecha</th>
-              <th>Empleado asignado</th>
+              <th scope="col">ID</th>
+              <th scope="col">Descripción</th>
+              <th scope="col">Nivel</th>
+              <th scope="col">Cliente</th>
+              <th scope="col">Fecha</th>
+              <th scope="col">Empleado asignado</th>
             </tr>
           </thead>
           <tbody>

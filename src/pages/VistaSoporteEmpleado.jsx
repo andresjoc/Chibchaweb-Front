@@ -139,13 +139,14 @@ const formateados = data.tickets_asignados.map((t) => ({
       <h2>🎫 Tickets Asignados</h2>
 
       <table>
+        <caption className="sr-only">Listado de tickets asignados al empleado técnico actual con identificadores, cliente, asunto, nivel y estado</caption>
         <thead>
           <tr>
-            <th>ID</th>
-            <th>Cliente</th>
-            <th>Asunto</th>
-            <th>Nivel</th>
-            <th>Estado</th>
+            <th scope="col">ID</th>
+            <th scope="col">Cliente</th>
+            <th scope="col">Asunto</th>
+            <th scope="col">Nivel</th>
+            <th scope="col">Estado</th>
           </tr>
         </thead>
         <tbody>

@@ -97,6 +97,9 @@ export default function AccessibilityWidget() {
         type="button"
       >
         <FontAwesomeIcon icon={faUniversalAccess} aria-hidden="true" />
+        <span className="sr-only">
+          {panelAbierto ? "Cerrar menú de accesibilidad" : "Abrir opciones de accesibilidad"}
+        </span>
       </button>
 
       {panelAbierto && (
@@ -115,6 +118,7 @@ export default function AccessibilityWidget() {
               type="button"
             >
               ✕
+              <span className="sr-only">Cerrar panel de accesibilidad</span>
             </button>
           </div>
 

@@ -1,4 +1,5 @@
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { useEffect } from "react";
+import { Routes, Route, Navigate, useLocation } from "react-router-dom";
 import { useUser } from './Context/UserContext';
 
 // Componentes comunes
@@ -60,6 +61,55 @@ import AccessibilityWidget from "./Components/AccessibilityWidget";
 
 function App() {
   const { usuario, cargandoUsuario } = useUser();
+  const location = useLocation();
+
+  // Actualizar el título de la página dinámicamente según la ruta (WCAG 2.4.2)
+  useEffect(() => {
+    const titulos = {
+      "/": "ChibchaWeb | Plataforma de Hosting y Dominios",
+      "/login": "ChibchaWeb | Iniciar Sesión",
+      "/registro": "ChibchaWeb | Registro de Cliente",
+      "/registroDistribuidor": "ChibchaWeb | Registro de Distribuidor",
+      "/registroEmpleado": "ChibchaWeb | Registro de Empleado",
+      "/verificar": "ChibchaWeb | Verificar Cuenta",
+      "/planesHosting": "ChibchaWeb | Planes de Hosting",
+      "/paquetes": "ChibchaWeb | Administrar Paquetes",
+      "/vista-soporte-empleado": "ChibchaWeb | Panel de Soporte - Empleado",
+      "/vista-soporte-admin": "ChibchaWeb | Administrar Soporte",
+      "/contacto": "ChibchaWeb | Contacto",
+      "/perfil": "ChibchaWeb | Mi Perfil",
+      "/carrito": "ChibchaWeb | Carrito de Compras",
+      "/tarjeta": "ChibchaWeb | Administrar Tarjetas",
+      "/metodos": "ChibchaWeb | Métodos de Pago",
+      "/DominiosAdquiridos": "ChibchaWeb | Mis Dominios",
+      "/soporte": "ChibchaWeb | Soporte Técnico",
+      "/comisiones": "ChibchaWeb | Comisiones",
+      "/extensiones": "ChibchaWeb | Administrar Extensiones",
+      "/ClientesAdmin": "ChibchaWeb | Administrar Clientes",
+      "/DistribuidoresAdmin": "ChibchaWeb | Administrar Distribuidores",
+      "/PostuladosAdmin": "ChibchaWeb | Administrar Postulados",
+      "/EmpleadosAdmin": "ChibchaWeb | Administrar Empleados",
+      "/CoordinadoresAdmin": "ChibchaWeb | Administrar Coordinadores",
+      "/estadisticas": "ChibchaWeb | Estadísticas",
+      "/tickets": "ChibchaWeb | Tickets de Soporte - Coordinador",
+      "/asignar-tickets": "ChibchaWeb | Asignar Tickets",
+      "/dominios": "ChibchaWeb | Buscador de Dominios",
+      "/paquete-adquirido": "ChibchaWeb | Paquete Adquirido",
+    };
+
+    let path = location.pathname;
+    if (path.startsWith("/clientes/")) {
+      document.title = "ChibchaWeb | Detalle de Cliente";
+    } else if (path.startsWith("/postulado/")) {
+      document.title = "ChibchaWeb | Detalle de Postulado";
+    } else if (path.startsWith("/empleado/")) {
+      document.title = "ChibchaWeb | Detalle de Empleado";
+    } else if (path.startsWith("/dominios/")) {
+      document.title = "ChibchaWeb | Detalle de Dominio";
+    } else {
+      document.title = titulos[path] || "ChibchaWeb | Plataforma de Hosting y Dominios";
+    }
+  }, [location]);
 
   const esAdmin = usuario?.tipocuenta === "ADMIN";
   const esCoordinador =
@@ -78,12 +128,14 @@ function App() {
       <a href="#main-content" className="skip-link">
         Saltar al contenido principal
       </a>
-      {/* Navbar dinámica */}
-      {usuario ? (
-        esAdmin ? <AdminNavbar /> :
-        esCoordinador ? <NavbarCoordinador /> :
-        <Navbar />
-      ) : <Navbar />}
+      {/* Header que envuelve el Navbar dinámico (WCAG Landmark) */}
+      <header>
+        {usuario ? (
+          esAdmin ? <AdminNavbar /> :
+          esCoordinador ? <NavbarCoordinador /> :
+          <Navbar />
+        ) : <Navbar />}
+      </header>
 
       <main id="main-content" className="main-content">
         <Routes>

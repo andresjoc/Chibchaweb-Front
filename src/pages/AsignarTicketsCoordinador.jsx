@@ -53,12 +53,13 @@ export default function AsignarTicketsCoordinador() {
       <h2>Asignar Tickets</h2>
       {mensaje && <p className="mensaje">{mensaje}</p>}
       <table className="tabla-tickets">
+        <caption className="sr-only">Listado de tickets pendientes por asignar a un técnico</caption>
         <thead>
           <tr>
-            <th>ID</th>
-            <th>Asunto</th>
-            <th>Asignar a</th>
-            <th>Acción</th>
+            <th scope="col">ID</th>
+            <th scope="col">Asunto</th>
+            <th scope="col">Asignar a</th>
+            <th scope="col">Acción</th>
           </tr>
         </thead>
         <tbody>

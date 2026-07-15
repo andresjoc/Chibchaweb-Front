@@ -109,13 +109,14 @@ function VistaSoporteEmpleado() {
       </div>
 
       <table>
+        <caption className="sr-only">Listado general de tickets de soporte con identificadores, cliente, asunto, nivel y estado actual</caption>
         <thead>
           <tr>
-            <th>ID</th>
-            <th>Cliente</th>
-            <th>Asunto</th>
-            <th>Nivel</th>
-            <th>Estado</th>
+            <th scope="col">ID</th>
+            <th scope="col">Cliente</th>
+            <th scope="col">Asunto</th>
+            <th scope="col">Nivel</th>
+            <th scope="col">Estado</th>
           </tr>
         </thead>
         <tbody>

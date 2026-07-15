@@ -26,16 +26,18 @@ function Plans() {
 
   return (
     <section className="plans-section">
-      <div className="plans-grid">
+      <h2 className="sr-only">Nuestras Ventajas y Servicios</h2>
+      <ul className="plans-grid">
         {plans.map((plan, i) => (
-          <PlanCard
-            key={i}
-            title={plan.title}
-            description={plan.description}
-            faIcon={plan.faIcon}
-          />
+          <li key={i}>
+            <PlanCard
+              title={plan.title}
+              description={plan.description}
+              faIcon={plan.faIcon}
+            />
+          </li>
         ))}
-      </div>
+      </ul>
     </section>
   );
 }

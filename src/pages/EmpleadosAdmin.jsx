@@ -126,12 +126,13 @@ export default function EmpleadosAdmin() {
       {mensaje && <p className="mensaje">{mensaje}</p>}
 
       <table className="tabla-empleados">
+        <caption className="sr-only">Listado de empleados técnicos registrados y sus niveles de soporte actuales</caption>
         <thead>
           <tr>
-            <th>Nombre</th>
-            <th>Correo</th>
-            <th>Nivel Actual</th>
-            <th>Acciones</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Correo</th>
+            <th scope="col">Nivel Actual</th>
+            <th scope="col">Acciones</th>
           </tr>
         </thead>
         <tbody>

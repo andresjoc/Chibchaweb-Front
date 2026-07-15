@@ -119,12 +119,13 @@ export default function CoordinadoresAdmin() {
     {mensaje && <p className="mensaje-coordinador">{mensaje}</p>}
 
     <table className="tabla-coordinadores-admin">
+      <caption className="sr-only">Listado de coordinadores registrados y sus niveles de soporte actuales</caption>
       <thead>
         <tr>
-          <th>Nombre</th>
-          <th>Correo</th>
-          <th>Nivel Actual</th>
-          <th>Acciones</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Correo</th>
+          <th scope="col">Nivel Actual</th>
+          <th scope="col">Acciones</th>
         </tr>
       </thead>
       <tbody>
